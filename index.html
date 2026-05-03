@@ -841,14 +841,30 @@
 
                 const tr = document.createElement('tr');
                 
+                // Symbol - Clickable
                 const tdSymbol = document.createElement('td');
                 tdSymbol.className = 'col-symbol';
-                tdSymbol.textContent = symbol;
+                const symbolLink = document.createElement('a');
+                symbolLink.href = "https://topdividendetfs.com/";
+                symbolLink.target = "_blank";
+                symbolLink.style.color = "inherit";
+                symbolLink.style.textDecoration = "none";
+                symbolLink.style.cursor = "pointer";
+                symbolLink.textContent = symbol;
+                tdSymbol.appendChild(symbolLink);
                 tr.appendChild(tdSymbol);
 
+                // ETF Name - Clickable
                 const tdName = document.createElement('td');
                 tdName.className = 'col-name';
-                tdName.textContent = name;
+                const nameLink = document.createElement('a');
+                nameLink.href = "https://topdividendetfs.com/";
+                nameLink.target = "_blank";
+                nameLink.style.color = "inherit";
+                nameLink.style.textDecoration = "none";
+                nameLink.style.cursor = "pointer";
+                nameLink.textContent = name;
+                tdName.appendChild(nameLink);
                 tr.appendChild(tdName);
 
                 const tdYield = document.createElement('td');
@@ -965,11 +981,17 @@
         document.getElementById('yieldFilter').addEventListener('change', applyFilters);
         document.getElementById('returnFilter').addEventListener('change', applyFilters);
 
-        // Reset filters button
+        // Reset filters button - FULL reset to initial state
         document.getElementById('resetBtn').addEventListener('click', function() {
             document.getElementById('searchFilter').value = '';
             document.getElementById('yieldFilter').value = '';
             document.getElementById('returnFilter').value = '';
+            
+            // Reset sort to default (Annual Average % descending)
+            sortState.col = 5;
+            sortState.dir = 'desc';
+            sortTable(5, 'desc');
+            
             applyFilters();
         });
 
