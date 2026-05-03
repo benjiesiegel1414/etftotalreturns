@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -571,8 +571,8 @@
         footer {
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.04));
             border-top: 1px solid var(--border-color);
-            padding: 40px 0;
-            margin-top: 80px;
+            padding: 50px 0 30px;
+            margin-top: auto;
         }
 
         .footer-content {
@@ -580,18 +580,22 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 30px;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 32px;
         }
 
         .footer-links {
             display: flex;
-            gap: 20px;
+            gap: 25px;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 13px;
+            font-size: 14px;
             transition: color 0.3s ease;
         }
 
@@ -599,9 +603,17 @@
             color: var(--green-light);
         }
 
+        .footer-disclaimer {
+            font-size: 13px;
+            color: var(--text-muted);
+            max-width: 700px;
+            line-height: 1.5;
+        }
+
         .footer-copyright {
             color: var(--text-muted);
             font-size: 13px;
+            white-space: nowrap;
         }
 
         /* ════════════════ RESPONSIVE ════════════════ */
@@ -653,12 +665,12 @@
 
             .footer-content {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
+                text-align: center;
             }
 
             .footer-links {
-                flex-direction: column;
-                gap: 10px;
+                justify-content: center;
             }
         }
     </style>
@@ -772,11 +784,18 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-links">
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Disclaimer</a>
-                    <a href="#">Contact</a>
+                    <a href="terms.html">Terms of Use</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                
                 </div>
+                
+                <div class="footer-disclaimer">
+                    This site is 100% free and for entertainment purposes only. All data is curated from public sources and may be inaccurate or delayed. 
+                    Not financial advice. Past performance does not guarantee future results.
+                </div>
+
                 <p class="footer-copyright">
                     © 2026 ETF Total Returns. All rights reserved.
                 </p>
@@ -987,7 +1006,6 @@
             document.getElementById('yieldFilter').value = '';
             document.getElementById('returnFilter').value = '';
             
-            // Reset sort to default (Annual Average % descending)
             sortState.col = 5;
             sortState.dir = 'desc';
             sortTable(5, 'desc');
