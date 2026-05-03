@@ -587,6 +587,208 @@
             font-size: 16px;
         }
 
+        /* ════════════════ NETWORK SECTION ════════════════ */
+        .network-section-etf {
+            margin: 80px 0 40px;
+            padding: 60px 0;
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.04) 0%, transparent 100%);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-divider {
+            text-align: center;
+            margin-bottom: 32px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .section-divider span {
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--green-light);
+            background: var(--dark-bg);
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+        }
+
+        .network-title {
+            font-size: 28px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--green-light) 0%, var(--text-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .network-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .site-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 640px) {
+            .site-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .site-cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        .network-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.04));
+            border: 1.5px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px 18px;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 640px) {
+            .network-card {
+                padding: 24px 20px;
+            }
+        }
+
+        .network-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(16, 185, 129, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .network-card:hover {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.08));
+            border-color: var(--green-primary);
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.2), inset 0 0 0 1px rgba(16, 185, 129, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .network-card.pro-card {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .network-card.pro-card:hover {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.1));
+            border-color: var(--accent-gold);
+            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.2), inset 0 0 0 1px rgba(245, 158, 11, 0.1);
+        }
+
+        .card-pro-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--dark-bg);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-icon {
+            font-size: 32px;
+            line-height: 1;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-name {
+            font-weight: 800;
+            font-size: 15px;
+            color: var(--green-light);
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .network-card.pro-card .card-name {
+            color: var(--accent-gold);
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 14px;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--green-light);
+            font-weight: 700;
+            font-size: 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .network-card:hover .card-btn {
+            background: var(--green-primary);
+            color: var(--dark-bg);
+        }
+
+        .network-card.pro-card .card-btn {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent-gold);
+        }
+
+        .network-card.pro-card:hover .card-btn {
+            background: var(--accent-gold);
+            color: var(--dark-bg);
+        }
+
         /* ════════════════ FOOTER ════════════════ */
         footer {
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.04));
@@ -786,6 +988,22 @@
                 font-size: 14px;
             }
 
+            .network-title {
+                font-size: 22px;
+            }
+
+            .network-subtitle {
+                font-size: 14px;
+            }
+
+            .site-cards-grid {
+                gap: 14px;
+            }
+
+            .network-card {
+                padding: 18px 16px;
+            }
+
             .footer-content {
                 flex-direction: column;
                 align-items: center;
@@ -940,6 +1158,39 @@
                 font-size: 13px;
             }
 
+            .network-section-etf {
+                margin: 60px 0 30px;
+                padding: 40px 0;
+            }
+
+            .network-title {
+                font-size: 18px;
+            }
+
+            .section-divider span {
+                font-size: 10px;
+            }
+
+            .site-cards-grid {
+                gap: 12px;
+            }
+
+            .network-card {
+                padding: 16px 14px;
+            }
+
+            .card-icon {
+                font-size: 28px;
+            }
+
+            .card-name {
+                font-size: 14px;
+            }
+
+            .card-desc {
+                font-size: 12px;
+            }
+
             footer {
                 padding: 32px 0 20px;
             }
@@ -1060,13 +1311,67 @@
                 </div>
             </div>
         </section>
-    </main>
-  <div class="sponsor-ad">
+        
+            <div class="container">
+                <!-- PROFESSIONAL SPONSOR AD -->
+                <div class="sponsor-ad">
                     <div style="text-align: center; padding: 0 30px; color: #111827; font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.3px; line-height: 1.35;">
                         Want to sponsor ETFTotalReturns.com?<br>
                         <span style="color: #10B981; font-size: 17px; font-weight: 700;">Contact Business@TopDividendETFs.com</span>
                     </div>
                 </div>
+
+        <!-- ═════════ NETWORK SECTION ═════════ -->
+        <section class="network-section-etf">
+            <div class="container">
+                <div class="section-divider">
+                    <span>Explore Our Dividend Network</span>
+                </div>
+                
+                <h2 class="network-title">More Dividend Investing Resources</h2>
+                <p class="network-subtitle">Built by dividend investors.  For dividend investors.</p>
+                
+                <div class="site-cards-grid">
+                    <a href="https://topdividendetfs.com" class="network-card">
+                        <div class="card-icon">📊</div>
+                        <div class="card-name">TopDividendETFs.com</div>
+                        <div class="card-desc">Rankings of the top 100 dividend ETFs by yield, growth, and reliability. Find your best fit.</div>
+                        <div class="card-btn">Browse Rankings →</div>
+                    </a>
+                    
+                    <a href="https://weeklyetfs.com" target="_blank" class="network-card">
+                        <div class="card-icon">📅</div>
+                        <div class="card-name">WeeklyETFs.com</div>
+                        <div class="card-desc">Prefer weekly income? Discover the best ETFs that pay dividends every single week.</div>
+                        <div class="card-btn">See Weekly ETFs →</div>
+                    </a>
+                    
+                    <a href="https://monthlyetfs.com" target="_blank" class="network-card">
+                        <div class="card-icon">📆</div>
+                        <div class="card-name">MonthlyETFs.com</div>
+                        <div class="card-desc">The ultimate guide to monthly dividend ETFs — match your income to your monthly bills.</div>
+                        <div class="card-btn">See Monthly ETFs →</div>
+                    </a>
+                    
+                    <a href="https://topdividendtools.com" target="_blank" class="network-card">
+                        <div class="card-icon">🛠️</div>
+                        <div class="card-name">TopDividendTools.com</div>
+                        <div class="card-desc">Free calculators, screeners, and planning tools for dividend investors of every level.</div>
+                        <div class="card-btn">Try Free Tools →</div>
+                    </a>
+
+                    <a href="https://topdividendetfspro.com" target="_blank" class="network-card pro-card">
+                        <div class="card-pro-badge">Pro</div>
+                        <div class="card-icon">📊</div>
+                        <div class="card-name">TopDividendETFsPro.com</div>
+                        <div class="card-desc">Deep data, advanced filters, tax grades, and daily-updated pro insights for serious dividend investors.</div>
+                        <div class="card-btn pro-btn">Explore Pro →</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+  
     <footer>
         <div class="container">
             <div class="footer-content">
