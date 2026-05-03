@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-time ETF total returns, dividend yields, and analytics.">
+    <meta name="keywords" content="ETF, dividend ETFs, total returns, yield optimization">
+    <title>ETF Total Returns</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-teal: #0B2F2B;
+            --forest-teal: #103A34;
+            --muted-emerald: #0F2623;
+            --teal-accent: #14919B;
+            --cyan-accent: #20B2AA;
+            --gold-accent: #D4A574;
+            --white: #FFFFFF;
+            --text-primary: #FFFFFF;
+            --text-secondary: #FFFFFF;
+            --text-muted: #FFFFFF;
+            --surface-light: rgba(32, 178, 170, 0.08);
+            --surface-dark: rgba(11, 47, 43, 0.6);
+            --border-color: rgba(20, 145, 155, 0.2);
+            --border-light: rgba(32, 178, 170, 0.15);
+            --success: #10B981;
+            --danger: #EF4444;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--dark-teal) 0%, var(--forest-teal) 25%, var(--muted-emerald) 50%, var(--dark-teal) 75%, var(--forest-teal) 100%);
+            background-attachment: fixed;
+            background-size: 400% 400%;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(32, 178, 170, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(20, 145, 155, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ════════════════ HEADER/NAV ════════════════ */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 47, 43, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--cyan-accent) 0%, var(--teal-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            font-family: 'Sora', sans-serif;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* ════════════════ HERO ════════════════ */
+        .hero {
+            padding: 40px 0 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 46px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--cyan-accent) 0%, var(--teal-accent) 50%, var(--white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-subtitle strong {
+            color: var(--cyan-accent);
+            font-weight: 700;
+        }
+
+        .brought-by {
+            margin-top: 12px;
+        }
+
+        .brought-by-btn {
+            display: inline-block;
+            padding: 9px 22px;
+            background: linear-gradient(135deg, var(--teal-accent), var(--cyan-accent));
+            color: var(--dark-teal);
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(32, 178, 170, 0.3);
+        }
+
+        .brought-by-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(32, 178, 170, 0.4);
+        }
+
+        /* ════════════════ DASHBOARD ════════════════ */
+        .dashboard-section {
+            margin: 20px 0 60px;
+        }
+
+        .filters-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+            padding: 24px;
+            background: rgba(20, 145, 155, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        select {
+            padding: 10px 14px;
+            background: #0F2623;
+            border: 1px solid var(--border-light);
+            color: #FFFFFF;
+            border-radius: 8px;
+            font-family: 'Sora', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input[type="text"]::placeholder {
+            color: #A0B8B5;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            background: #103A34;
+            border-color: var(--cyan-accent);
+            box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.1);
+        }
+
+        .reset-filter-btn {
+            padding: 10px 16px;
+            background: transparent;
+            border: 1.5px solid var(--cyan-accent);
+            color: var(--cyan-accent);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            align-self: flex-end;
+        }
+
+        .reset-filter-btn:hover {
+            background: rgba(32, 178, 170, 0.1);
+        }
+
+        /* ════════════════ TABLE ════════════════ */
+        .table-container {
+            background: rgba(20, 145, 155, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .table-header-label {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold-accent);
+            font-weight: 700;
+            padding: 20px 28px 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: block;
+        }
+
+        .loading-state {
+            padding: 80px 32px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-light);
+            border-top-color: var(--cyan-accent);
+            border-radius: 50%;
+            margin: 24px auto;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        thead {
+            background: rgba(16, 58, 52, 0.8);
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        th {
+            padding: 16px 28px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+            border-right: 1px solid var(--border-color);
+        }
+
+        th.center {
+            text-align: center;
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+        th:hover {
+            background: rgba(32, 178, 170, 0.1);
+        }
+
+        th.sort-asc::after {
+            content: ' ↑';
+            color: var(--cyan-accent);
+        }
+
+        th.sort-desc::after {
+            content: ' ↓';
+            color: var(--cyan-accent);
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background: rgba(32, 178, 170, 0.06);
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        td {
+            padding: 16px 28px;
+            color: var(--text-primary);
+            font-family: 'Sora', sans-serif;
+        }
+
+        td.center {
+            text-align: center;
+        }
+
+        .col-symbol {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            font-weight: bold;
+            color: var(--cyan-accent);
+            letter-spacing: 0.5px;
+        }
+
+        .col-name {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .col-yield {
+            font-weight: 700;
+            text-align: center;
+            color: var(--white);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .col-inception {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .col-return {
+            font-weight: 700;
+            text-align: center;
+            font-size: 15px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .col-annual {
+            font-weight: 700;
+            text-align: center;
+            font-size: 15px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .return-positive {
+            color: var(--success);
+        }
+
+        .return-negative {
+            color: var(--danger);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 80px 32px;
+            color: var(--text-secondary);
+        }
+
+        /* ════════════════ RESPONSIVE ════════════════ */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 40px 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            th, td {
+                padding: 12px 16px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" onclick="location.reload()">ETF Total Returns</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ═════════ HERO ═════════ -->
+        <section class="hero">
+            <div class="container">
+                <h1>Total Returns & Yields</h1>
+                <p class="hero-subtitle">
+                    Real-time ETF data with dividend yields and annualized returns.<br><br>
+                    <strong>Data is as accurate as possible but can be wrong!</strong><br><br>
+                    Brought to you by: 
+                    <a href="https://topdividendetfs.com/" target="_blank" class="brought-by-btn">topdividendetfs.com</a><br><br>
+                    <em>*This site/tool is for entertainment purposes ONLY!*</em>
+                </p>
+            </div>
+        </section>
+
+        <!-- ═════════ DASHBOARD ═════════ -->
+        <section class="dashboard-section" id="data">
+            <div class="container">
+                <h2 class="section-title">ETF Database</h2>
+
+                <div class="filters-bar">
+                    <div class="filter-group">
+                        <label class="filter-label">Search ETFs</label>
+                        <input type="text" id="searchFilter" placeholder="Ticker or name...">
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Dividend Yield</label>
+                        <select id="yieldFilter">
+                            <option value="">All Yields</option>
+                            <option value="0-3">0–3%</option>
+                            <option value="3-6">3–6%</option>
+                            <option value="6-10">6–10%</option>
+                            <option value="10+">10%+</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Total Return</label>
+                        <select id="returnFilter">
+                            <option value="">All Returns</option>
+                            <option value="positive">Positive</option>
+                            <option value="negative">Negative</option>
+                        </select>
+                    </div>
+                    <button class="reset-filter-btn" id="resetBtn">Reset Filters</button>
+                </div>
+
+                <div class="table-container">
+                    <span class="table-header-label">ETF Database</span>
+                    <div id="loadingMsg" class="loading-state">
+                        <div class="loading-spinner"></div>
+                        <p>Loading data…</p>
+                    </div>
+                    <table id="etfTable" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th onclick="sortTable(0)">Symbol</th>
+                                <th onclick="sortTable(1)">ETF Name</th>
+                                <th onclick="sortTable(2)" class="center">Dividend Yield</th>
+                                <th onclick="sortTable(3)" class="center">Inception Date</th>
+                                <th onclick="sortTable(4)" class="center">Total Return</th>
+                                <th onclick="sortTable(5)" class="center">Annual Average %</th>
+                            </tr>
+                        </thead>
+                        <tbody id="etfBody"></tbody>
+                    </table>
+                    <div id="noResults" class="no-results" style="display: none;">
+                        <p>No ETFs match your filters.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Disclaimer</a>
+                    <a href="#">Contact</a>
+                </div>
+                <p class="footer-copyright">
+                    © 2026 ETF Total Returns. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv';
+
+        let allRows = [];
+        let allData = [];
+        let sortState = { col: 5, dir: 'desc' };
+
+        function calculateAnnualized(totalReturnStr, inceptionStr) {
+            try {
+                if (!inceptionStr || inceptionStr === 'N/A' || inceptionStr.trim() === '') return 'N/A';
+                
+                const total = parseFloat(totalReturnStr.replace('%', '').trim()) / 100;
+                const incDate = new Date(inceptionStr.trim());
+                const today = new Date(2026, 4, 3);
+                const days = (today - incDate) / (1000 * 60 * 60 * 24);
+                const years = days / 365.25;
+                
+                if (years <= 0 || isNaN(years)) return 'N/A';
+                
+                const annualized = Math.pow(1 + total, 1 / years) - 1;
+                return (annualized * 100).toFixed(2) + '%';
+            } catch (e) {
+                return 'N/A';
+            }
+        }
+
+        function loadData() {
+            fetch(CSV_URL + '&t=' + Date.now())
+                .then(r => r.ok ? r.text() : Promise.reject())
+                .then(txt => renderTable(txt))
+                .catch(() => {
+                    document.getElementById('loadingMsg').innerHTML = '<p>Unable to load data. Please refresh.</p>';
+                });
+        }
+
+        function renderTable(txt) {
+            const lines = txt.split('\n');
+            const tbody = document.getElementById('etfBody');
+            tbody.innerHTML = '';
+            allRows = [];
+            allData = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const parts = lines[i].split(',').map(x => x.trim());
+                if (parts.length < 10 || !parts[0]) continue;
+
+                const symbol = parts[0];
+                const name = parts[1];
+                const yield_val = parts[3];
+                const return_val = parts[7];
+                const inception = parts[9] || 'N/A';
+                const annualAvg = calculateAnnualized(return_val, inception);
+
+                allData.push({ symbol, name, yield: yield_val, return: return_val, inception, annual: annualAvg });
+
+                const tr = document.createElement('tr');
+                
+                const tdSymbol = document.createElement('td');
+                tdSymbol.className = 'col-symbol';
+                tdSymbol.textContent = symbol;
+                tr.appendChild(tdSymbol);
+
+                const tdName = document.createElement('td');
+                tdName.className = 'col-name';
+                tdName.textContent = name;
+                tr.appendChild(tdName);
+
+                const tdYield = document.createElement('td');
+                tdYield.className = 'col-yield';
+                tdYield.textContent = yield_val;
+                tr.appendChild(tdYield);
+
+                const tdInception = document.createElement('td');
+                tdInception.className = 'col-inception';
+                tdInception.textContent = inception;
+                tr.appendChild(tdInception);
+
+                const tdReturn = document.createElement('td');
+                tdReturn.className = 'col-return';
+                const returnNum = parseFloat(return_val);
+                tdReturn.innerHTML = `<span class="${returnNum >= 0 ? 'return-positive' : 'return-negative'}">${return_val}</span>`;
+                tr.appendChild(tdReturn);
+
+                const tdAnnual = document.createElement('td');
+                tdAnnual.className = 'col-annual';
+                tdAnnual.textContent = annualAvg;
+                tr.appendChild(tdAnnual);
+
+                tbody.appendChild(tr);
+                allRows.push(tr);
+            }
+
+            document.getElementById('etfTable').style.display = 'table';
+            document.getElementById('loadingMsg').style.display = 'none';
+            
+            sortTable(sortState.col, sortState.dir);
+            applyFilters();
+        }
+
+        function sortTable(col, dir) {
+            if (typeof dir === 'string') {
+                sortState.dir = dir;
+            } else {
+                sortState.dir = sortState.col === col && sortState.dir === 'asc' ? 'desc' : 'asc';
+            }
+            sortState.col = col;
+
+            const tbody = document.getElementById('etfBody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+
+            rows.sort((a, b) => {
+                let aVal = a.cells[col].textContent.trim();
+                let bVal = b.cells[col].textContent.trim();
+
+                if (col === 3) { // Inception Date
+                    const dateA = aVal === 'N/A' ? new Date(0) : new Date(aVal);
+                    const dateB = bVal === 'N/A' ? new Date(0) : new Date(bVal);
+                    return sortState.dir === 'asc' ? dateA - dateB : dateB - dateA;
+                }
+
+                if ([2, 4, 5].includes(col)) {
+                    aVal = parseFloat(aVal.replace(/[%$,]/g, '')) || 0;
+                    bVal = parseFloat(bVal.replace(/[%$,]/g, '')) || 0;
+                    return sortState.dir === 'asc' ? aVal - bVal : bVal - aVal;
+                }
+
+                return sortState.dir === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+            });
+
+            rows.forEach(r => tbody.appendChild(r));
+
+            document.querySelectorAll('th').forEach((th, i) => {
+                th.className = i === col ? `sort-${sortState.dir}` : '';
+            });
+
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchFilter').value.toLowerCase().trim();
+            const yieldFilter = document.getElementById('yieldFilter').value;
+            const returnFilter = document.getElementById('returnFilter').value;
+
+            let visibleCount = 0;
+
+            document.getElementById('etfBody').querySelectorAll('tr').forEach(row => {
+                const symbol = row.cells[0].textContent.toLowerCase();
+                const name = row.cells[1].textContent.toLowerCase();
+                const yieldVal = parseFloat(row.cells[2].textContent);
+                const returnVal = parseFloat(row.cells[4].textContent);
+
+                let show = true;
+
+                if (searchTerm && !symbol.includes(searchTerm) && !name.includes(searchTerm)) {
+                    show = false;
+                }
+
+                if (yieldFilter && show) {
+                    const [min, max] = yieldFilter === '10+' ? [10, 999] : yieldFilter.split('-').map(Number);
+                    if (yieldVal < min || yieldVal > (max || 999)) show = false;
+                }
+
+                if (returnFilter && show) {
+                    if (returnFilter === 'positive' && returnVal < 0) show = false;
+                    if (returnFilter === 'negative' && returnVal >= 0) show = false;
+                }
+
+                row.style.display = show ? '' : 'none';
+                if (show) visibleCount++;
+            });
+
+            document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>
