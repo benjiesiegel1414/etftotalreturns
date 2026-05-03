@@ -131,10 +131,70 @@
             transform: scale(1.05);
         }
 
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
+        .premium-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #F59E0B, #FBBF24);
+            color: var(--dark-bg);
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+        }
+
+        .premium-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(245, 158, 11, 0.6);
+        }
+
+        /* 728x90 Display Ad */
+        .display-ad {
+            width: 728px;
+            height: 90px;
+            background: #FFFFFF;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .display-ad:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-color: var(--green-primary);
+        }
+
+        .ad-inner {
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .ad-headline {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--dark-bg);
+            margin-bottom: 6px;
+        }
+
+        .ad-contact a {
+            font-size: 14px;
+            color: var(--green-primary);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .ad-contact a:hover {
+            color: var(--accent-gold);
+            text-decoration: underline;
         }
 
         /* ════════════════ HERO ════════════════ */
@@ -542,6 +602,31 @@
                 padding: 0 16px;
             }
 
+            .header-content {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .premium-btn {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+
+            .display-ad {
+                width: 100%;
+                height: auto;
+                padding: 16px;
+                margin: 0 auto 32px;
+            }
+
+            .ad-headline {
+                font-size: 16px;
+            }
+
+            .ad-contact a {
+                font-size: 12px;
+            }
+
             .hero {
                 padding: 40px 0 30px;
             }
@@ -584,6 +669,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo" onclick="location.reload()">📈 ETF Returns</div>
+                <a href="https://TopDividendETFsPRO.com" target="_blank" class="premium-btn">🌟 Premium</a>
             </div>
         </div>
     </header>
@@ -610,6 +696,16 @@
         <!-- ═════════ DASHBOARD ═════════ -->
         <section class="dashboard-section" id="data">
             <div class="container">
+                <!-- 728x90 Display Ad -->
+                <div class="display-ad">
+                    <div class="ad-inner">
+                        <div class="ad-headline">Advertise Here</div>
+                        <div class="ad-contact">
+                            <a href="mailto:Business@TopDividendETFs.com">Business@TopDividendETFs.com</a>
+                        </div>
+                    </div>
+                </div>
+
                 <h2 class="section-title">ETF Database</h2>
 
                 <div class="filters-bar">
