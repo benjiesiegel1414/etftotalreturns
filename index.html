@@ -154,17 +154,23 @@
 
         /* 728x90 Display Ad */
         .display-ad {
-            width: 728px;
+            width: 100%;
+            max-width: 728px;
             height: 90px;
-            background: #FFFFFF;
-            border: 2px solid #ddd;
+            background: #FFFFFF !important;
+            border: 3px solid #333 !important;
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 32px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            margin: 24px auto 32px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 10;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
 
         .display-ad:hover {
@@ -172,29 +178,31 @@
             border-color: var(--green-primary);
         }
 
-        .ad-inner {
-            text-align: center;
-            padding: 0 20px;
+        /* Professional Sponsor Ad */
+        .sponsor-ad {
+            width: 100%;
+            max-width: 728px;
+            height: 90px;
+            background: #FFFFFF !important;
+            border: 4px solid #1F2937;
+            border-radius: 12px;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            margin: 20px auto 35px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25),
+                        inset 0 2px 0 rgba(255,255,255,0.6);
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 10;
         }
 
-        .ad-headline {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--dark-bg);
-            margin-bottom: 6px;
-        }
-
-        .ad-contact a {
-            font-size: 14px;
-            color: var(--green-primary);
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.2s ease;
-        }
-
-        .ad-contact a:hover {
-            color: var(--accent-gold);
-            text-decoration: underline;
+        .sponsor-ad:hover {
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.3),
+                        inset 0 2px 0 rgba(255,255,255,0.7);
+            border-color: #10B981;
+            transform: translateY(-2px);
         }
 
         /* ════════════════ HERO ════════════════ */
@@ -612,19 +620,10 @@
                 font-size: 12px;
             }
 
-            .display-ad {
+            .display-ad, .sponsor-ad {
                 width: 100%;
                 height: auto;
-                padding: 16px;
-                margin: 0 auto 32px;
-            }
-
-            .ad-headline {
-                font-size: 16px;
-            }
-
-            .ad-contact a {
-                font-size: 12px;
+                padding: 18px 20px;
             }
 
             .hero {
@@ -668,7 +667,7 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo" onclick="location.reload()">📈 ETF Returns</div>
+                <div class="logo" onclick="location.reload()">📈 ETF Total Returns</div>
                 <a href="https://TopDividendETFsPRO.com" target="_blank" class="premium-btn">🌟 Premium</a>
             </div>
         </div>
@@ -678,9 +677,9 @@
         <!-- ═════════ HERO ═════════ -->
         <section class="hero">
             <div class="container">
-                <h1>ETF Total Returns & Yields</h1>
+                <h1>ETFTotalReturns.com</h1>
                 <p class="hero-subtitle">
-                    Real-time ETF data with dividend yields and annualized returns.<br><br>
+                    Real-time ETF data with dividend yields & annualized returns<br><br>
                     <strong>Data is as accurate as possible but can be wrong!</strong><br><br>
                     Brought to you by: 
                 </p>
@@ -688,21 +687,29 @@
                     <a href="https://topdividendetfs.com/" target="_blank" class="brought-by-btn">Top Dividend ETFs</a>
                 </div>
                 <p class="hero-subtitle">
-                    <em>*This site/tool is for entertainment purposes ONLY!*</em>
+                    <em>*This site/tool is for entertainment purposes ONLY! NOT financial advice! Not buy or sell signals!*</em>
                 </p>
             </div>
         </section>
 
         <!-- ═════════ DASHBOARD ═════════ -->
         <section class="dashboard-section" id="data">
+            <!-- Existing 728x90 Display Ad -->
+            <div class="display-ad">
+                <div class="ad-inner">
+                    <div class="ad-headline">Advertise Here</div>
+                    <div class="ad-contact">
+                        <a href="mailto:Business@TopDividendETFs.com">Business@TopDividendETFs.com</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="container">
-                <!-- 728x90 Display Ad -->
-                <div class="display-ad">
-                    <div class="ad-inner">
-                        <div class="ad-headline">Advertise Here</div>
-                        <div class="ad-contact">
-                            <a href="mailto:Business@TopDividendETFs.com">Business@TopDividendETFs.com</a>
-                        </div>
+                <!-- PROFESSIONAL SPONSOR AD -->
+                <div class="sponsor-ad">
+                    <div style="text-align: center; padding: 0 30px; color: #111827; font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.3px; line-height: 1.35;">
+                        Want to sponsor ETFtotalreturns.com?<br>
+                        <span style="color: #10B981; font-size: 17px; font-weight: 700;">Contact Business@TopDividendETFs.com</span>
                     </div>
                 </div>
 
@@ -930,7 +937,6 @@
 
                 let show = true;
 
-                // Fixed: Search filter now properly checks both symbol and name
                 if (searchTerm) {
                     const symbolMatch = symbol.includes(searchTerm);
                     const nameMatch = name.includes(searchTerm);
