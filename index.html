@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Real-time ETF total returns, dividend yields, and analytics.">
+    <meta name="description" content="Real-time ETF total returns, dividend yields, & analytics.">
     <meta name="keywords" content="ETF, dividend ETFs, total returns, yield optimization">
     <title>ETF Total Returns</title>
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://etf-total-returns.com/">
+    <meta property="og:title" content="ETF Total Returns & Yields">
+    <meta property="og:description" content="Real-time ETF data with dividend yields and annualized returns.">
+    <meta property="og:image" content="https://i.postimg.cc/HxHmnPyC/100-Dividend-ETFs-(3).png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://etf-total-returns.com/">
+    <meta property="twitter:title" content="ETF Total Returns & Yields">
+    <meta property="twitter:description" content="Real-time ETF data with dividend yields and annualized returns.">
+    <meta property="twitter:image" content="https://i.postimg.cc/HxHmnPyC/100-Dividend-ETFs-(3).png">
 
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -119,7 +135,7 @@
 
         /* ════════════════ HERO ════════════════ */
         .hero {
-            padding: 60px 0 40px;
+            padding: 40px 0 8px;
             text-align: center;
             max-width: 900px;
             margin: 0 auto;
@@ -129,7 +145,7 @@
             font-size: clamp(36px, 5vw, 52px);
             font-weight: 800;
             letter-spacing: -1px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             line-height: 1.1;
             background: linear-gradient(135deg, var(--green-light) 0%, var(--white) 100%);
             -webkit-background-clip: text;
@@ -138,11 +154,11 @@
         }
 
         .hero-subtitle {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-secondary);
-            margin-bottom: 28px;
+            margin-bottom: 12px;
             font-weight: 400;
-            line-height: 1.8;
+            line-height: 1.6;
             max-width: 750px;
             margin-left: auto;
             margin-right: auto;
@@ -156,28 +172,33 @@
         .hero-subtitle em {
             color: var(--accent-gold);
             font-style: italic;
+            font-size: 13px;
+            margin-top: 8px;
+            display: block;
         }
 
         .brought-by {
-            margin-top: 20px;
+            margin-top: 12px;
+            margin-bottom: 6px;
         }
 
         .brought-by-btn {
             display: inline-block;
-            padding: 12px 28px;
+            padding: 14px 32px;
             background: linear-gradient(135deg, var(--green-primary), var(--green-light));
             color: var(--dark-bg);
-            font-weight: 700;
-            font-size: 14px;
+            font-weight: 800;
+            font-size: 16px;
             text-decoration: none;
             border-radius: 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
             white-space: nowrap;
             border: none;
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            letter-spacing: 0.5px;
         }
 
         .brought-by-btn::before {
@@ -187,22 +208,26 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
             transition: left 0.5s ease;
         }
 
         .brought-by-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 50px rgba(16, 185, 129, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 0 60px rgba(16, 185, 129, 0.8), 0 0 20px rgba(52, 211, 153, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .brought-by-btn:hover::before {
             left: 100%;
         }
 
+        .brought-by-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
         /* ════════════════ DASHBOARD ════════════════ */
         .dashboard-section {
-            margin: 40px 0 80px;
+            margin: 12px 0 80px;
         }
 
         .section-title {
@@ -554,29 +579,29 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo" onclick="location.reload()">📈 ETF Returns</div>
+                <div class="logo" onclick="location.reload()">📈 ETF Total Returns</div>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- ═════════ HERO ═════════ -->
-        <section class="hero">
-            <div class="container">
-                <h1>ETF Total Returns & Yields</h1>
-                <p class="hero-subtitle">
-                    Real-time ETF data with dividend yields and annualized returns.<br><br>
-                    <strong>Data is as accurate as possible but can be wrong!</strong><br><br>
-                    Brought to you by: 
-                </p>
-                <div class="brought-by">
-                    <a href="https://topdividendetfs.com/" target="_blank" class="brought-by-btn">Top Dividend ETFs</a>
-                </div>
-                <p class="hero-subtitle">
-                    <em>*This site/tool is for entertainment purposes ONLY!*</em>
-                </p>
-            </div>
-        </section>
+<!-- ═════════ HERO ═════════ -->
+<section class="hero">
+    <div class="container">
+        <h1>ETFtotalreturns.com</h1>
+        <p class="hero-subtitle">
+            Real-time ETF data with dividend yields and annualized returns.<br><br>
+            <strong>Data is as accurate as possible but can be wrong!</strong><br><br>
+            <strong>Brought to you by 👇</strong>
+        </p>
+        <div class="brought-by">
+            <a href="https://topdividendetfs.com/" target="_blank" class="brought-by-btn">Top Dividend ETFs</a>
+        </div>
+        <p class="hero-subtitle">
+            <em>*This site/tool is for entertainment purposes ONLY! NOT financial advice or signals!*</em>
+        </p>
+    </div>
+</section>
 
         <!-- ═════════ DASHBOARD ═════════ -->
         <section class="dashboard-section" id="data">
