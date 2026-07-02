@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9929351005136304"
+     crossorigin="anonymous"></script>
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VYCX30S0EC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VYCX30S0EC');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compare any ETFs head to head by average annual total return since inception. Free, shareable comparison tool.">
+    <meta name="keywords" content="ETF comparison, total returns, dividend ETFs, annualized return">
+    <title>ETF Head-to-Head Comparison Tool | ETF Total Returns</title>
+
+    <meta property="og:title" content="ETF Head-to-Head Comparison Tool">
+    <meta property="og:description" content="Stack any ETFs and compare average annual total return since inception — one fair number, fully shareable.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/benjiesiegel1414/etftotalreturns/main/etf.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://etf-total-returns.com/compare.html">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ETF Head-to-Head Comparison Tool">
+    <meta name="twitter:description" content="Compare average annual total return across any ETFs since inception.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/benjiesiegel1414/etftotalreturns/main/etf.png">
+    <meta name="twitter:site" content="@TopDividendETFs">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --dark-bg: #0A1F1E;
+            --surface-dark: #0F2A28;
+            --surface-light: #152D2A;
+            --green-primary: #10B981;
+            --green-light: #34D399;
+            --green-dark: #059669;
+            --white: #FFFFFF;
+            --text-primary: #FFFFFF;
+            --text-secondary: #E5E7EB;
+            --text-muted: #9CA3AF;
+            --border-color: rgba(16, 185, 129, 0.2);
+            --border-light: rgba(16, 185, 129, 0.15);
+            --success: #10B981;
+            --danger: #EF4444;
+            --accent-gold: #F59E0B;
+        }
+
+        html, body { margin: 0; padding: 0; overflow-x: hidden; }
+
+        body {
+            font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--surface-dark) 50%, var(--dark-bg) 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+            pointer-events: none; z-index: 0;
+        }
+
+        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+
+        /* ════════════════ HEADER ════════════════ */
+        header {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(10, 31, 30, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo {
+            font-size: 20px; font-weight: 800; letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--green-light) 0%, var(--green-primary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            cursor: pointer; transition: transform 0.3s ease;
+        }
+        .logo:hover { transform: scale(1.05); }
+        .premium-btn {
+            display: inline-block; padding: 10px 20px;
+            background: linear-gradient(135deg, #F59E0B, #FBBF24);
+            color: var(--dark-bg); font-weight: 800; font-size: 14px; text-decoration: none; border-radius: 8px;
+            transition: all 0.3s ease; box-shadow: 0 0 20px rgba(245, 158, 11, 0.4); white-space: nowrap;
+        }
+        .premium-btn:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(245, 158, 11, 0.6); }
+
+        /* ════════════════ HERO ════════════════ */
+        .hero { padding: 40px 0 8px; text-align: center; max-width: 900px; margin: 0 auto; }
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 46px); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; line-height: 1.15;
+            background: linear-gradient(135deg, var(--green-light) 0%, var(--white) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: 15px; color: var(--text-secondary); margin-bottom: 12px; font-weight: 400;
+            max-width: 700px; margin-left: auto; margin-right: auto;
+        }
+        .hero-subtitle strong { color: var(--green-light); font-weight: 700; }
+        .hero-subtitle em { color: var(--accent-gold); font-style: italic; font-size: 13px; margin-top: 8px; display: block; }
+        .back-link { display: inline-block; margin-bottom: 18px; color: var(--text-muted); font-size: 13px; }
+        .back-link:hover { color: var(--green-light); }
+
+        /* ════════════════ AD BANNER ════════════════ */
+        .banner { width: 90%; max-width: 1000px; margin: 24px auto 32px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .banner img { display: block; width: auto; height: auto; max-width: 100%; object-fit: contain; transition: transform .3s ease; }
+        .banner:hover img { transform: scale(1.02); }
+        .banner small { color: var(--text-muted); font-size: 0.78em; font-weight: 600; }
+        @media (max-width: 760px) { .banner { width: 100%; max-width: none; margin: 16px auto 24px; } }
+
+        /* ════════════════ SECTION SCAFFOLDING ════════════════ */
+        .section { margin: 12px 0 40px; }
+        .section-title {
+            font-size: 22px; font-weight: 700; margin-bottom: 20px; color: var(--white);
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        /* ════════════════ PICKER ════════════════ */
+        .picker-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.04));
+            border: 1px solid var(--border-color); border-radius: 14px; padding: 24px; margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .picker-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 10px; }
+        .picker-input-row { position: relative; }
+        .picker-input-row input {
+            width: 100%; padding: 13px 16px; background: var(--surface-dark); border: 1.5px solid var(--border-light);
+            color: var(--text-primary); border-radius: 10px; font-family: 'Sora', sans-serif; font-size: 14px; outline: none;
+        }
+        .picker-input-row input:focus { background: var(--surface-light); border-color: var(--green-primary); box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15); }
+        .autocomplete-list {
+            position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: var(--surface-light);
+            border: 1px solid var(--border-color); border-radius: 10px; max-height: 260px; overflow-y: auto; z-index: 20;
+            box-shadow: 0 12px 32px rgba(0,0,0,.5); display: none;
+        }
+        .autocomplete-list.show { display: block; }
+        .ac-item { padding: 11px 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); }
+        .ac-item:last-child { border-bottom: none; }
+        .ac-item:hover { background: rgba(16, 185, 129, 0.1); }
+        .ac-sym { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--green-light); }
+        .ac-name { color: var(--text-muted); font-size: 0.85rem; margin-left: 10px; }
+
+        .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .chip {
+            display: inline-flex; align-items: center; gap: 8px; background: var(--surface-dark); border: 1px solid var(--border-color);
+            border-radius: 999px; padding: 6px 8px 6px 14px; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.85rem;
+        }
+        .chip button { background: none; border: none; color: var(--text-muted); cursor: pointer; width: 20px; height: 20px; border-radius: 50%; font-size: 0.9rem; line-height: 1; }
+        .chip button:hover { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
+
+        .quick-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .quick-btn {
+            background: transparent; border: 1.5px dashed var(--border-color); color: var(--text-secondary); border-radius: 999px;
+            padding: 6px 14px; font-size: 0.78rem; cursor: pointer; font-family: 'Sora', sans-serif;
+        }
+        .quick-btn:hover { border-color: var(--green-primary); border-style: solid; color: var(--green-light); }
+
+        /* ════════════════ CHART CARD ════════════════ */
+        .chart-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(16, 185, 129, 0.02));
+            border: 1px solid var(--border-color); border-radius: 14px; padding: 30px 26px 22px; margin: 20px 0;
+            backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        .chart-card-head { margin-bottom: 24px; }
+        .chart-card-head .kicker { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green-light); font-weight: 700; margin-bottom: 6px; }
+        .chart-card-head h2 { font-size: 1.25rem; font-weight: 800; margin: 0 0 4px; color: var(--white); }
+        .chart-card-head p { color: var(--text-muted); font-size: 0.85rem; margin: 0; font-family: 'JetBrains Mono', monospace; }
+        .empty-chart { padding: 60px 20px; text-align: center; color: var(--text-muted); font-size: 15px; }
+
+        /* ---- 2-fund head-to-head ---- */
+        .compare-wrap { position: relative; }
+        .compare-versus { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .compare-side {
+            background: var(--surface-dark); border: 1.5px solid var(--border-light); border-radius: 12px;
+            padding: 24px 18px; text-align: center; position: relative;
+        }
+        .compare-side.leader { border-color: var(--green-primary); box-shadow: 0 0 0 1px var(--green-primary), 0 8px 24px rgba(16,185,129,.15); }
+        .leader-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--green-light); font-weight: 700; margin-bottom: 10px; }
+        .compare-badge {
+            width: 42px; height: 42px; border-radius: 10px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;
+            font-family: 'JetBrains Mono', monospace; font-weight: 900; font-size: 1rem; background: var(--surface-light);
+            border: 1px solid var(--border-color); color: var(--green-light);
+        }
+        .compare-ticker { font-weight: 800; font-size: 1.1rem; font-family: 'JetBrains Mono', monospace; }
+        .compare-name { color: var(--text-muted); font-size: 0.75rem; margin: 3px 0 16px; }
+        .compare-metric { font-family: 'JetBrains Mono', monospace; font-size: 2.3rem; font-weight: 900; line-height: 1; }
+        .compare-metric.pos { color: var(--green-light); }
+        .compare-metric.neg { color: var(--danger); }
+        .compare-metric-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 6px 0 16px; }
+        .compare-substats { display: flex; justify-content: center; gap: 16px; font-size: 0.75rem; color: var(--text-secondary); border-top: 1px solid var(--border-light); padding-top: 14px; }
+        .compare-substats b { color: var(--white); display: block; font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; }
+        .vs-divider {
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 2;
+            background: var(--dark-bg); border: 1.5px solid var(--accent-gold); color: var(--accent-gold);
+            font-weight: 800; font-size: 12px; padding: 5px 11px; border-radius: 999px; text-transform: uppercase;
+            box-shadow: 0 0 16px rgba(245,158,11,.35);
+        }
+        @media(max-width: 640px) {
+            .compare-versus { grid-template-columns: 1fr; }
+            .vs-divider { top: auto; left: 50%; transform: translate(-50%,-50%); }
+        }
+
+        /* ---- leaderboard: 1 or 3+ funds ---- */
+        .rank-row { display: flex; align-items: center; gap: 16px; padding: 14px 4px; border-bottom: 1px solid var(--border-light); }
+        .rank-row:last-child { border-bottom: none; }
+        .rank-num {
+            width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 0.8rem; color: var(--text-muted);
+            border: 1px solid var(--border-color); flex-shrink: 0;
+        }
+        .rank-num.top { color: var(--accent-gold); border-color: var(--accent-gold); background: rgba(245,158,11,.1); }
+        .rank-main { flex: 1; min-width: 0; }
+        .rank-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+        .rank-ticker { font-weight: 800; font-size: 1rem; font-family: 'JetBrains Mono', monospace; }
+        .rank-name { font-size: 0.72rem; color: var(--text-muted); margin-top: 1px; }
+        .rank-value { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 1.05rem; flex-shrink: 0; }
+        .rank-value.pos { color: var(--green-light); }
+        .rank-value.neg { color: var(--danger); }
+        .rank-bar-track { background: var(--surface-dark); height: 6px; border-radius: 3px; overflow: hidden; margin-top: 8px; }
+        .rank-bar-fill { height: 100%; border-radius: 3px; transition: width .5s ease; background: linear-gradient(90deg, var(--green-dark), var(--green-light)); }
+        .rank-bar-fill.neg { background: var(--danger); }
+
+        .chart-watermark { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-light); }
+        .wm-brand { font-weight: 800; font-size: 0.85rem; background: linear-gradient(135deg, var(--green-light), var(--green-primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .wm-note { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--text-muted); }
+
+        /* ════════════════ ACTIONS ════════════════ */
+        .action-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 22px 0 8px; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 10px;
+            font-weight: 800; font-size: 0.88rem; cursor: pointer; border: none; transition: all .25s ease;
+            font-family: 'Sora', sans-serif;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--green-primary), var(--green-light)); color: var(--dark-bg);
+            box-shadow: 0 0 24px rgba(16,185,129,.4);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 36px rgba(16,185,129,.6); }
+        .btn-outline { background: transparent; border: 1.5px solid var(--green-primary); color: var(--green-light); }
+        .btn-outline:hover { background: rgba(16, 185, 129, 0.1); box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+        .toast { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--green-light); margin-top: 10px; min-height: 1.2em; }
+
+        /* ════════════════ DETAIL TABLE ════════════════ */
+        .table-container {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(16, 185, 129, 0.02));
+            border: 1px solid var(--border-color); border-radius: 14px; overflow-x: auto;
+            backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        .table-header-label {
+            font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green-light); font-weight: 700;
+            padding: 20px 24px 16px; border-bottom: 1px solid var(--border-color); display: block;
+        }
+        table.detail-table { width: 100%; border-collapse: collapse; min-width: 640px; }
+        .detail-table th {
+            padding: 14px 12px; text-align: left; font-weight: 700; font-size: 11.5px; letter-spacing: 0.6px;
+            color: var(--green-light); text-transform: uppercase; border-right: 1px solid var(--border-light);
+            background: rgba(16,185,129,.04); white-space: nowrap;
+        }
+        .detail-table th:last-child { border-right: none; }
+        .detail-table td { padding: 12px; color: var(--text-primary); border-bottom: 1px solid var(--border-light); font-size: 0.86rem; }
+        .detail-table tr:last-child td { border-bottom: none; }
+        .detail-table tr:hover { background: rgba(16, 185, 129, 0.06); }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* ════════════════ WHY GRID ════════════════ */
+        .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+        .why-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.04));
+            border: 1px solid var(--border-color); border-radius: 14px; padding: 22px;
+        }
+        .why-card h3 { font-size: 0.98rem; margin: 0 0 6px; color: var(--green-light); font-weight: 700; }
+        .why-card p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; }
+
+        /* ════════════════ NETWORK SECTION (matches homepage) ════════════════ */
+        .network-section-etf { margin: 70px 0 40px; padding: 50px 0; background: linear-gradient(180deg, rgba(16, 185, 129, 0.04) 0%, transparent 100%); border-top: 1px solid var(--border-color); }
+        .section-divider { text-align: center; margin-bottom: 28px; display: flex; align-items: center; gap: 16px; justify-content: center; }
+        .section-divider span { font-weight: 800; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--green-light); background: var(--dark-bg); padding: 0 16px; position: relative; z-index: 1; }
+        .section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--border-color), transparent); }
+        .network-title { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 10px; background: linear-gradient(135deg, var(--green-light) 0%, var(--text-primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .network-subtitle { text-align: center; color: var(--text-secondary); font-size: 14px; margin-bottom: 28px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .site-cards-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 640px) { .site-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; } }
+        @media (min-width: 1024px) { .site-cards-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; } }
+        .network-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.04));
+            border: 1.5px solid var(--border-color); border-radius: 14px; padding: 22px 18px; text-decoration: none; color: var(--text-primary);
+            display: flex; flex-direction: column; align-items: center; text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden;
+        }
+        .network-card:hover { background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.08)); border-color: var(--green-primary); box-shadow: 0 8px 32px rgba(16, 185, 129, 0.2); transform: translateY(-4px); }
+        .network-card.pro-card { background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05)); border-color: rgba(245, 158, 11, 0.3); }
+        .network-card.pro-card:hover { background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.1)); border-color: var(--accent-gold); box-shadow: 0 8px 32px rgba(245, 158, 11, 0.2); }
+        .card-pro-badge { display: inline-block; background: var(--accent-gold); color: var(--dark-bg); font-size: 10px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 8px; }
+        .card-icon { font-size: 30px; line-height: 1; margin-bottom: 10px; }
+        .card-name { font-weight: 800; font-size: 15px; color: var(--green-light); margin-bottom: 8px; }
+        .network-card.pro-card .card-name { color: var(--accent-gold); }
+        .card-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 14px; flex: 1; }
+        .card-btn { display: inline-block; padding: 8px 16px; background: rgba(16, 185, 129, 0.2); color: var(--green-light); font-weight: 700; font-size: 12px; border-radius: 8px; transition: all 0.2s ease; }
+        .network-card:hover .card-btn { background: var(--green-primary); color: var(--dark-bg); }
+        .network-card.pro-card .card-btn { background: rgba(245, 158, 11, 0.2); color: var(--accent-gold); }
+        .network-card.pro-card:hover .card-btn { background: var(--accent-gold); color: var(--dark-bg); }
+
+        /* ════════════════ FOOTER ════════════════ */
+        footer { background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.04)); border-top: 1px solid var(--border-color); padding: 44px 0 26px; margin-top: auto; }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+        .footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 13px; }
+        .footer-links a:hover { color: var(--green-light); }
+        .footer-disclaimer { font-size: 12.5px; color: var(--text-muted); max-width: 640px; line-height: 1.5; }
+        .footer-copyright { color: var(--text-muted); font-size: 12.5px; white-space: nowrap; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .header-content { flex-direction: column; gap: 8px; }
+            .hero h1 { font-size: 26px; }
+            .why-grid { grid-template-columns: 1fr; }
+            .rank-top { flex-direction: column; align-items: flex-start; gap: 2px; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">📈 ETF Total Returns</a>
+                <a href="https://TopDividendETFsPRO.com" target="_blank" class="premium-btn">🌟 Premium</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <a href="/" class="back-link">← Back to ETF Database</a>
+                <h1>Head-to-Head ETF Comparison</h1>
+                <p class="hero-subtitle">
+                    Stack any ETFs and compare <strong>average annual total return since inception</strong> — one fair number, no matter how old each fund is.<br><br>
+                    <strong>Data is as accurate as possible but can be wrong!</strong>
+                </p>
+                <p class="hero-subtitle">
+                    <em>*This tool is for entertainment purposes ONLY! NOT financial advice! Not buy or sell signals!*</em>
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+
+                <div class="banner">
+                    <a href="https://vegasharesetfs.com/VAIE" target="_blank">
+                        <img src="https://raw.githubusercontent.com/benjiesiegel1414/etftotalreturns/main/vaie-ad-728x90px.png" alt="VAIE - Sponsored Advertisement">
+                    </a>
+                    <small>Sponsored by VegaShares</small>
+                </div>
+
+                <h2 class="section-title">🔍 Build Your Comparison</h2>
+
+                <div class="picker-card">
+                    <div class="picker-label">Add ETFs to Compare</div>
+                    <div class="picker-input-row">
+                        <input type="text" id="tickerInput" placeholder="Type a ticker or fund name (e.g. SCHD)…" autocomplete="off">
+                        <div class="autocomplete-list" id="autocompleteList"></div>
+                    </div>
+                    <div class="chip-row" id="chipRow"></div>
+                    <div class="quick-row" id="quickRow"></div>
+                </div>
+
+                <div class="chart-card" id="chartCard">
+                    <div class="chart-card-head">
+                        <div class="kicker">Average Annual Total Return · Since Inception</div>
+                        <h2 id="chartTitle">Fund Comparison</h2>
+                        <p id="chartSub">Add ETFs above to build your comparison.</p>
+                    </div>
+                    <div id="chartBody">
+                        <div class="empty-chart">Your comparison will appear here.</div>
+                    </div>
+                    <div class="chart-watermark">
+                        <div class="wm-brand">📈 ETF Total Returns</div>
+                        <div class="wm-note" id="chartDate"></div>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn btn-primary" id="downloadBtn">⬇ Download Image</button>
+                    <button class="btn btn-outline" id="copyLinkBtn">🔗 Copy Link</button>
+                </div>
+                <div class="toast" id="toast"></div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="banner">
+                <a href="https://vegasharesetfs.com/VAIE" target="_blank">
+                    <img src="https://raw.githubusercontent.com/benjiesiegel1414/etftotalreturns/main/vaie-ad-728x90px.png" alt="VAIE - Sponsored Advertisement">
+                </a>
+                <small>Sponsored by VegaShares</small>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">💰 Fund Details</h2>
+                <div class="table-container">
+                    <span class="table-header-label">Comparison Breakdown</span>
+                    <div style="overflow-x:auto;">
+                        <table class="detail-table" id="detailTable">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th><th>Name</th><th>Provider</th><th>Inception</th><th>Age</th>
+                                    <th>Total Return</th><th>Avg. Annual Return</th><th>Yield</th><th>Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detailBody">
+                                <tr><td colspan="9" style="text-align:center; color:var(--text-muted); padding:30px;">Add ETFs above to see details.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="why-grid">
+                    <div class="why-card">
+                        <h3>One Fair Number</h3>
+                        <p>Average annual total return since inception — a 2-year-old fund and a 15-year-old fund get compared honestly.</p>
+                    </div>
+                    <div class="why-card">
+                        <h3>Shareable by Link</h3>
+                        <p>Every comparison gets its own URL — send it to a friend or drop it in a forum thread.</p>
+                    </div>
+                    <div class="why-card">
+                        <h3>Export-Ready</h3>
+                        <p>Download a clean comparison image, ready to post wherever you talk ETFs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="network-section-etf">
+            <div class="container">
+                <div class="section-divider"><span>Explore Our Dividend Network</span></div>
+                <h2 class="network-title">More Dividend Investing Resources</h2>
+                <p class="network-subtitle">Built by dividend investors. For dividend investors.</p>
+                <div class="site-cards-grid">
+                    <a href="https://topdividendetfs.com" class="network-card">
+                        <div class="card-icon">📊</div>
+                        <div class="card-name">TopDividendETFs.com</div>
+                        <div class="card-desc">Rankings of the top 100 dividend ETFs by yield, growth, and reliability. Find your best fit.</div>
+                        <div class="card-btn">Browse Rankings →</div>
+                    </a>
+                    <a href="https://weeklyetfs.com" target="_blank" class="network-card">
+                        <div class="card-icon">📅</div>
+                        <div class="card-name">WeeklyETFs.com</div>
+                        <div class="card-desc">Prefer weekly income? Discover the best ETFs that pay dividends every single week.</div>
+                        <div class="card-btn">See Weekly ETFs →</div>
+                    </a>
+                    <a href="https://monthlyetfs.com" target="_blank" class="network-card">
+                        <div class="card-icon">📆</div>
+                        <div class="card-name">MonthlyETFs.com</div>
+                        <div class="card-desc">The ultimate guide to monthly dividend ETFs — match your income to your monthly bills.</div>
+                        <div class="card-btn">See Monthly ETFs →</div>
+                    </a>
+                    <a href="https://topdividendtools.com" target="_blank" class="network-card">
+                        <div class="card-icon">🛠️</div>
+                        <div class="card-name">TopDividendTools.com</div>
+                        <div class="card-desc">Free calculators, screeners, and planning tools for dividend investors of every level.</div>
+                        <div class="card-btn">Try Free Tools →</div>
+                    </a>
+                    <a href="https://topdividendetfspro.com" target="_blank" class="network-card pro-card">
+                        <div class="card-pro-badge">Pro</div>
+                        <div class="card-icon">📊</div>
+                        <div class="card-name">TopDividendETFsPro.com</div>
+                        <div class="card-desc">Deep data, advanced filters, tax grades, and daily-updated pro insights for serious dividend investors.</div>
+                        <div class="card-btn">Explore Pro →</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="terms.html">Terms of Use</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                </div>
+                <div class="footer-disclaimer">
+                    This site is 100% free and for entertainment purposes only. All data is curated from public sources and may be inaccurate or delayed.
+                    Not financial advice. Past performance does not guarantee future results.
+                </div>
+                <p class="footer-copyright">© 2026 ETF Total Returns. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv';
+
+let allFunds = [];
+let selected = [];
+
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  return lines.slice(1).map(line => {
+    const cols = line.split(',').map(c => c.trim().replace(/^"|"$/g, ''));
+    return {
+      symbol: cols[0] || '', name: cols[1] || '', provider: cols[2] || '', yieldStr: cols[3] || '',
+      taxGrade: cols[4] || '', expenseRatio: cols[5] || '', aum: cols[6] || '', totalReturnStr: cols[7] || '',
+      priceDecay: cols[8] || '', inceptionStr: cols[9] || '', payoutFreq: cols[10] || '', rating: cols[11] || ''
+    };
+  }).filter(f => f.symbol);
+}
+
+function parseNum(s) { return parseFloat(String(s).replace(/[%,$]/g, '')) || 0; }
+
+function normalizeDate(str) {
+  if (!str) return null;
+  const slash = str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/);
+  if (slash) {
+    let [, m, d, y] = slash;
+    if (y.length === 2) y = '20' + y;
+    return new Date(`${y}-${m.padStart(2,'0')}-${d.padStart(2,'0')}`);
+  }
+  const dash = str.match(/^(\d{1,2})-(\d{1,2})-(\d{2,4})$/);
+  if (dash) {
+    let [, m, d, y] = dash;
+    if (y.length === 2) y = '20' + y;
+    return new Date(`${y}-${m.padStart(2,'0')}-${d.padStart(2,'0')}`);
+  }
+  const d = new Date(str);
+  return isNaN(d.getTime()) ? null : d;
+}
+
+function yearsSince(dateStr) {
+  const d = normalizeDate(dateStr);
+  if (!d) return null;
+  return (Date.now() - d.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+}
+
+function avgAnnualReturn(f) {
+  const totalReturn = parseNum(f.totalReturnStr);
+  const years = yearsSince(f.inceptionStr);
+  if (years === null || years <= 0) return totalReturn;
+  const totalMultiplier = 1 + (totalReturn / 100);
+  if (totalMultiplier <= 0) return -100;
+  return (Math.pow(totalMultiplier, 1 / years) - 1) * 100;
+}
+
+function fundBySymbol(sym) { return allFunds.find(f => f.symbol.toUpperCase() === sym.toUpperCase()); }
+
+async function loadData() {
+  try {
+    const res = await fetch(CSV_URL + '&t=' + Date.now());
+    const text = await res.text();
+    allFunds = parseCSV(text);
+    setupQuickButtons();
+    hydrateFromURL();
+  } catch (e) {
+    console.error(e);
+    document.getElementById('chartSub').textContent = 'Could not load fund data — please refresh.';
+  }
+}
+
+function parseAUM(s) {
+  if (!s) return 0;
+  const clean = s.toUpperCase().replace(/[^0-9.BMK]/g, '');
+  let n = parseFloat(clean) || 0;
+  if (clean.includes('B')) n *= 1e9; else if (clean.includes('M')) n *= 1e6; else if (clean.includes('K')) n *= 1e3;
+  return n;
+}
+
+function setupQuickButtons() {
+  const presets = [
+    { label: 'SCHD vs VYM', tickers: ['SCHD','VYM'] },
+    { label: 'JEPI vs JEPQ', tickers: ['JEPI','JEPQ'] },
+    { label: 'Top 4 by AUM', tickers: null }
+  ];
+  const row = document.getElementById('quickRow');
+  row.innerHTML = '';
+  presets.forEach(p => {
+    let tickers = p.tickers;
+    if (!tickers) tickers = [...allFunds].sort((a,b) => parseAUM(b.aum) - parseAUM(a.aum)).slice(0,4).map(f => f.symbol);
+    const valid = tickers.filter(t => fundBySymbol(t));
+    if (valid.length < 2) return;
+    const btn = document.createElement('button');
+    btn.className = 'quick-btn';
+    btn.textContent = p.label;
+    btn.onclick = () => { selected = valid; render(); updateURL(); };
+    row.appendChild(btn);
+  });
+}
+
+function hydrateFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const t = params.get('tickers');
+  if (t) selected = t.split(',').map(s => s.trim().toUpperCase()).filter(s => fundBySymbol(s)).slice(0,8);
+  render();
+}
+
+function updateURL() {
+  const params = new URLSearchParams(window.location.search);
+  if (selected.length) params.set('tickers', selected.join(',')); else params.delete('tickers');
+  const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+  window.history.replaceState({}, '', newUrl);
+}
+
+const input = document.getElementById('tickerInput');
+const acList = document.getElementById('autocompleteList');
+
+input.addEventListener('input', () => {
+  const q = input.value.trim().toLowerCase();
+  if (!q) { acList.classList.remove('show'); return; }
+  const matches = allFunds.filter(f => !selected.includes(f.symbol.toUpperCase()))
+    .filter(f => f.symbol.toLowerCase().includes(q) || f.name.toLowerCase().includes(q)).slice(0, 8);
+  if (!matches.length) { acList.classList.remove('show'); return; }
+  acList.innerHTML = matches.map(f => `<div class="ac-item" data-sym="${f.symbol}"><span><span class="ac-sym">${f.symbol}</span><span class="ac-name">${f.name}</span></span></div>`).join('');
+  acList.classList.add('show');
+});
+
+acList.addEventListener('click', (e) => {
+  const item = e.target.closest('.ac-item');
+  if (!item) return;
+  addTicker(item.dataset.sym);
+  input.value = '';
+  acList.classList.remove('show');
+});
+
+document.addEventListener('click', (e) => { if (!e.target.closest('.picker-input-row')) acList.classList.remove('show'); });
+
+input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const first = acList.querySelector('.ac-item');
+    if (first) { addTicker(first.dataset.sym); input.value = ''; acList.classList.remove('show'); }
+  }
+});
+
+function addTicker(sym) {
+  sym = sym.toUpperCase();
+  if (selected.includes(sym) || selected.length >= 8) return;
+  if (!fundBySymbol(sym)) return;
+  selected.push(sym);
+  render();
+  updateURL();
+}
+
+function removeTicker(sym) { selected = selected.filter(s => s !== sym); render(); updateURL(); }
+
+function render() { renderChips(); renderChart(); renderTable(); }
+
+function renderChips() {
+  const row = document.getElementById('chipRow');
+  row.innerHTML = selected.map(sym => `<div class="chip">${sym}<button data-sym="${sym}" aria-label="Remove ${sym}">×</button></div>`).join('');
+  row.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => removeTicker(btn.dataset.sym)));
+}
+
+function fmtYears(years) {
+  if (!years) return '';
+  return (years < 1 ? Math.round(years*12) + 'mo' : years.toFixed(1) + 'yr') + ' old';
+}
+
+function renderChart() {
+  const body = document.getElementById('chartBody');
+  const sub = document.getElementById('chartSub');
+  const title = document.getElementById('chartTitle');
+  const dateEl = document.getElementById('chartDate');
+  dateEl.textContent = new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+
+  if (!selected.length) {
+    title.textContent = 'Fund Comparison';
+    sub.textContent = 'Add ETFs above to build your comparison.';
+    body.innerHTML = `<div class="empty-chart">Your comparison will appear here.</div>`;
+    return;
+  }
+
+  const funds = selected.map(fundBySymbol).filter(Boolean);
+  const withMetric = funds.map(f => ({ f, metric: avgAnnualReturn(f) })).sort((a,b) => b.metric - a.metric);
+
+  if (withMetric.length === 2) {
+    title.textContent = withMetric[0].f.symbol + ' vs ' + withMetric[1].f.symbol;
+    sub.textContent = 'Average annual total return since inception';
+
+    const sides = withMetric.map((x, i) => {
+      const isLeader = i === 0;
+      const years = yearsSince(x.f.inceptionStr);
+      return `<div class="compare-side ${isLeader ? 'leader' : ''}">
+        ${isLeader ? '<div class="leader-tag">Higher Return</div>' : '<div class="leader-tag" style="visibility:hidden;">spacer</div>'}
+        <div class="compare-badge">${x.f.symbol.charAt(0)}</div>
+        <div class="compare-ticker">${x.f.symbol}</div>
+        <div class="compare-name">${x.f.name || x.f.provider}</div>
+        <div class="compare-metric ${x.metric>=0?'pos':'neg'}">${x.metric>=0?'+':''}${x.metric.toFixed(1)}%</div>
+        <div class="compare-metric-label">Avg Annual Return</div>
+        <div class="compare-substats">
+          <div><b>${x.f.yieldStr||'—'}</b>Yield</div>
+          <div><b>${fmtYears(years)||'—'}</b>Age</div>
+          <div><b>${x.f.taxGrade||x.f.rating||'—'}</b>Grade</div>
+        </div>
+      </div>`;
+    });
+
+    body.innerHTML = `<div class="compare-wrap"><div class="compare-versus">${sides[0]}${sides[1]}</div><div class="vs-divider">vs</div></div>`;
+    return;
+  }
+
+  title.textContent = 'Ranked by Average Annual Return';
+  sub.textContent = `Comparing ${funds.length} fund${funds.length > 1 ? 's' : ''}`;
+
+  const maxAbs = Math.max(...withMetric.map(x => Math.abs(x.metric)), 1);
+
+  body.innerHTML = withMetric.map((x, i) => {
+    const isPos = x.metric >= 0;
+    const pct = Math.min((Math.abs(x.metric) / maxAbs) * 100, 100);
+    const years = yearsSince(x.f.inceptionStr);
+    return `<div class="rank-row">
+      <div class="rank-num ${i < 3 ? 'top' : ''}">${i+1}</div>
+      <div class="rank-main">
+        <div class="rank-top">
+          <div>
+            <div class="rank-ticker">${x.f.symbol}</div>
+            <div class="rank-name">${x.f.name || x.f.provider} · ${fmtYears(years)}</div>
+          </div>
+          <div class="rank-value ${isPos?'pos':'neg'}">${isPos?'+':''}${x.metric.toFixed(1)}%</div>
+        </div>
+        <div class="rank-bar-track"><div class="rank-bar-fill ${isPos?'':'neg'}" style="width:${pct}%;"></div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderTable() {
+  const tbody = document.getElementById('detailBody');
+  if (!selected.length) {
+    tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:var(--text-muted); padding:30px;">Add ETFs above to see details.</td></tr>`;
+    return;
+  }
+  const funds = selected.map(fundBySymbol).filter(Boolean);
+  tbody.innerHTML = funds.map(f => {
+    const totalReturn = parseNum(f.totalReturnStr);
+    const years = yearsSince(f.inceptionStr);
+    const avgAnnual = avgAnnualReturn(f);
+    return `<tr>
+      <td class="mono" style="color:var(--green-light); font-weight:700;">${f.symbol}</td>
+      <td>${f.name}</td>
+      <td>${f.provider}</td>
+      <td class="mono">${f.inceptionStr || '—'}</td>
+      <td class="mono">${years ? years.toFixed(1)+'y' : '—'}</td>
+      <td class="mono">${totalReturn>=0?'+':''}${totalReturn.toFixed(1)}%</td>
+      <td class="mono" style="color:${avgAnnual>=0?'var(--green-light)':'var(--danger)'};">${avgAnnual>=0?'+':''}${avgAnnual.toFixed(1)}%</td>
+      <td class="mono">${f.yieldStr || '—'}</td>
+      <td class="mono">${f.taxGrade || f.rating || '—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+document.getElementById('downloadBtn').addEventListener('click', async () => {
+  if (!selected.length) { showToast('Add at least one ETF first.'); return; }
+  const card = document.getElementById('chartCard');
+  showToast('Generating image…');
+  try {
+    const canvas = await html2canvas(card, { backgroundColor: '#0F2A28', scale: 2 });
+    const link = document.createElement('a');
+    link.download = 'etf-comparison-' + selected.join('-').toLowerCase() + '.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    showToast('Image downloaded ✓');
+  } catch (e) {
+    console.error(e);
+    showToast('Could not generate image — try again.');
+  }
+});
+
+document.getElementById('copyLinkBtn').addEventListener('click', () => {
+  if (!selected.length) { showToast('Add at least one ETF first.'); return; }
+  updateURL();
+  navigator.clipboard.writeText(window.location.href).then(() => showToast('Link copied ✓')).catch(() => showToast(window.location.href));
+});
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  setTimeout(() => { if (t.textContent === msg) t.textContent = ''; }, 3000);
+}
+
+loadData();
+</script>
+</body>
+</html>
