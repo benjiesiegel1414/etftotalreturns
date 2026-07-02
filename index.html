@@ -1424,8 +1424,16 @@
                 if (!inceptionStr || inceptionStr === 'N/A' || inceptionStr.trim() === '') return 'N/A';
                 
                 const total = parseFloat(totalReturnStr.replace('%', '').trim()) / 100;
-                const incDate = new Date(inceptionStr.trim());
-                const today = new Date(2026, 4, 3);
+                
+                // Explicitly parse MM/DD/YYYY format
+                const dateParts = inceptionStr.trim().split('/');
+                if (dateParts.length !== 3) return 'N/A';
+                const month = parseInt(dateParts[0], 10) - 1; // 0-indexed
+                const day = parseInt(dateParts[1], 10);
+                const year = parseInt(dateParts[2], 10);
+                const incDate = new Date(year, month, day);
+                
+                const today = new Date();
                 const days = (today - incDate) / (1000 * 60 * 60 * 24);
                 const years = days / 365.25;
                 
