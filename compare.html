@@ -13,12 +13,14 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Compare any ETFs head to head by average annual total return since inception. Free, shareable comparison tool.">
-    <meta name="keywords" content="ETF comparison, total returns, dividend ETFs, annualized return">
-    <title>ETF Head-to-Head Comparison Tool | ETF Total Returns</title>
+    <meta name="description" content="Free ETF comparison tool. Compare 2 ETFs side by side — or stack up to 8 — by average annual total return since inception. Shareable links, downloadable charts.">
+    <meta name="keywords" content="ETF comparison tool, compare ETFs, compare 2 ETFs, ETF compare, compare ETFs side by side, ETF vs ETF, ETF total return comparison, dividend ETF comparison">
+    <title>ETF Comparison Tool — Compare 2 ETFs Side by Side (Free) | ETF Total Returns</title>
 
-    <meta property="og:title" content="ETF Head-to-Head Comparison Tool">
-    <meta property="og:description" content="Stack any ETFs and compare average annual total return since inception — one fair number, fully shareable.">
+    <link rel="canonical" href="https://etf-total-returns.com/compare.html">
+
+    <meta property="og:title" content="ETF Comparison Tool — Compare ETFs Side by Side">
+    <meta property="og:description" content="Compare any 2 ETFs (or up to 8) by average annual total return since inception — one fair number, fully shareable.">
     <meta property="og:image" content="https://raw.githubusercontent.com/benjiesiegel1414/etftotalreturns/main/etf.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -26,10 +28,64 @@
     <meta property="og:url" content="https://etf-total-returns.com/compare.html">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ETF Head-to-Head Comparison Tool">
-    <meta name="twitter:description" content="Compare average annual total return across any ETFs since inception.">
+    <meta name="twitter:title" content="ETF Comparison Tool — Compare ETFs Side by Side">
+    <meta name="twitter:description" content="Compare average annual total return across any ETFs since inception. Free & shareable.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/benjiesiegel1414/etftotalreturns/main/etf.png">
     <meta name="twitter:site" content="@TopDividendETFs">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ETF Comparison Tool",
+      "url": "https://etf-total-returns.com/compare.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Free ETF comparison tool that compares any two or more ETFs side by side by average annual total return since inception."
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I compare two ETFs side by side?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Type both tickers into the search box above (for example, SCHD and VYM). The tool instantly shows a head-to-head comparison of each ETF's average annual total return since inception, plus yield, fund age, and grade — all on one screen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I compare more than 2 ETFs at once?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can compare up to 8 ETFs at the same time. With 3 or more funds, the tool switches to a ranked leaderboard sorted by average annual return, so you can see how a whole group of ETFs stacks up at a glance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best metric for comparing ETFs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Average annual total return since inception is one of the fairest single numbers for comparing ETFs of different ages, because it includes both price appreciation and dividends and annualizes them. A 2-year-old fund and a 15-year-old fund can be compared on equal footing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this ETF comparison tool free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — the tool is 100% free, with no login required. Every comparison gets its own shareable URL, and you can download the comparison as an image."
+          }
+        }
+      ]
+    }
+    </script>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -297,6 +353,17 @@
         .why-card h3 { font-size: 0.98rem; margin: 0 0 6px; color: var(--green-light); font-weight: 700; }
         .why-card p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; }
 
+        /* ════════════════ SEO / FAQ SECTION ════════════════ */
+        .seo-section { max-width: 800px; margin: 0 auto; }
+        .seo-section h2 { font-size: 20px; font-weight: 800; color: var(--white); margin: 34px 0 12px; }
+        .seo-section h2:first-child { margin-top: 0; }
+        .seo-section p { color: var(--text-secondary); font-size: 14.5px; margin-bottom: 12px; }
+        .seo-section strong { color: var(--green-light); }
+        .faq-item { border: 1px solid var(--border-color); border-radius: 12px; padding: 18px 20px; margin-bottom: 12px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(16, 185, 129, 0.02)); }
+        .faq-item h3 { font-size: 15px; font-weight: 700; color: var(--green-light); margin-bottom: 6px; }
+        .faq-item p { font-size: 13.5px; color: var(--text-secondary); margin: 0; }
+
         /* ════════════════ NETWORK SECTION (matches homepage) ════════════════ */
         .network-section-etf { margin: 70px 0 40px; padding: 50px 0; background: linear-gradient(180deg, rgba(16, 185, 129, 0.04) 0%, transparent 100%); border-top: 1px solid var(--border-color); }
         .section-divider { text-align: center; margin-bottom: 28px; display: flex; align-items: center; gap: 16px; justify-content: center; }
@@ -358,9 +425,9 @@
         <section class="hero">
             <div class="container">
                 <a href="/" class="back-link">← Back to ETF Database</a>
-                <h1>Head-to-Head ETF Comparison</h1>
+                <h1>Free ETF Comparison Tool: Compare ETFs Side by Side</h1>
                 <p class="hero-subtitle">
-                    Stack any ETFs and compare <strong>average annual total return since inception</strong> — one fair number, no matter how old each fund is.<br><br>
+                    Compare 2 ETFs head-to-head — or stack up to 8 at once — by <strong>average annual total return since inception</strong>. One fair number, no matter how old each fund is.<br><br>
                     <strong>Data is as accurate as possible but can be wrong!</strong>
                 </p>
                 <p class="hero-subtitle">
@@ -379,7 +446,7 @@
                     <small>Sponsored by VegaShares</small>
                 </div>
 
-                <h2 class="section-title">🔍 Build Your Comparison</h2>
+                <h2 class="section-title">🔍 Compare Any 2 ETFs (or More) — Build Your Comparison</h2>
 
                 <div class="picker-card">
                     <div class="picker-label">Add ETFs to Compare</div>
@@ -394,7 +461,7 @@
                 <div class="chart-card" id="chartCard">
                     <div class="chart-card-head">
                         <div class="kicker">Average Annual Total Return · Since Inception</div>
-                        <h2 id="chartTitle">Fund Comparison</h2>
+                        <h2 id="chartTitle">ETF vs ETF Comparison</h2>
                         <p id="chartSub">Add ETFs above to build your comparison.</p>
                     </div>
                     <div id="chartBody">
@@ -425,7 +492,7 @@
 
         <section class="section">
             <div class="container">
-                <h2 class="section-title">💰 Fund Details</h2>
+                <h2 class="section-title">💰 ETF Comparison Details: Side-by-Side Fund Data</h2>
                 <div class="table-container">
                     <span class="table-header-label">Comparison Breakdown</span>
                     <div style="overflow-x:auto;">
@@ -459,6 +526,36 @@
                     <div class="why-card">
                         <h3>Export-Ready</h3>
                         <p>Download a clean comparison image, ready to post wherever you talk ETFs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="seo-section">
+                    <h2>How to Compare 2 ETFs Side by Side</h2>
+                    <p>Comparing two ETFs is simple with this free ETF compare tool: type each ticker into the search box above (try the classic <strong>SCHD vs VYM</strong> or <strong>JEPI vs JEPQ</strong> matchups), and you'll instantly get a head-to-head view of each fund's average annual total return since inception, current yield, fund age, and grade — all on one shareable page.</p>
+
+                    <h2>Why Compare ETFs by Total Return Since Inception?</h2>
+                    <p>Most ETF comparison tools only show trailing 1-, 3-, or 5-year returns, which punishes newer funds and hides how a strategy has really performed over its full life. This tool annualizes each fund's <strong>total return since inception</strong> — price appreciation plus dividends — into one fair, apples-to-apples number, so you can compare a brand-new covered-call ETF against a decade-old dividend stalwart honestly.</p>
+
+                    <h2>ETF Comparison Tool — Frequently Asked Questions</h2>
+                    <div class="faq-item">
+                        <h3>How do I compare two ETFs side by side?</h3>
+                        <p>Type both tickers into the search box at the top of this page. The tool instantly shows a head-to-head comparison card with each ETF's average annual total return since inception, plus yield, fund age, and grade.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Can I compare more than 2 ETFs at once?</h3>
+                        <p>Yes — you can compare up to 8 ETFs at the same time. With 3 or more funds selected, the tool switches to a ranked leaderboard sorted by average annual return.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>What is the best metric for comparing ETFs?</h3>
+                        <p>Average annual total return since inception is one of the fairest single numbers for comparing ETFs of different ages, because it includes both price appreciation and dividends, annualized over each fund's full lifetime.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Is this ETF comparison tool free?</h3>
+                        <p>Yes — 100% free, no login required. Every comparison gets its own shareable URL, and you can download the result as an image.</p>
                     </div>
                 </div>
             </div>
@@ -698,7 +795,7 @@ function renderChart() {
   dateEl.textContent = new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
 
   if (!selected.length) {
-    title.textContent = 'Fund Comparison';
+    title.textContent = 'ETF vs ETF Comparison';
     sub.textContent = 'Add ETFs above to build your comparison.';
     body.innerHTML = `<div class="empty-chart">Your comparison will appear here.</div>`;
     return;
@@ -710,6 +807,7 @@ function renderChart() {
   if (withMetric.length === 2) {
     title.textContent = withMetric[0].f.symbol + ' vs ' + withMetric[1].f.symbol;
     sub.textContent = 'Average annual total return since inception';
+    document.title = withMetric[0].f.symbol + ' vs ' + withMetric[1].f.symbol + ' — ETF Comparison Tool | ETF Total Returns';
 
     const sides = withMetric.map((x, i) => {
       const isLeader = i === 0;
@@ -733,7 +831,7 @@ function renderChart() {
     return;
   }
 
-  title.textContent = 'Ranked by Average Annual Return';
+  title.textContent = 'ETFs Ranked by Average Annual Return';
   sub.textContent = `Comparing ${funds.length} fund${funds.length > 1 ? 's' : ''}`;
 
   const maxAbs = Math.max(...withMetric.map(x => Math.abs(x.metric)), 1);
