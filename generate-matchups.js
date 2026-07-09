@@ -18,7 +18,7 @@ const path = require('path');
 const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv';
 
 // The live domain — change once here if the domain ever changes.
-const BASE_URL = 'https://etf-total-returns.com';
+const BASE_URL = 'https://etftotalreturns.com';
 
 // Generate every pair among the top N funds by AUM.
 // 25 → 300 pages. 30 → 435. 40 → 780. Start moderate; raise later.
