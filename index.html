@@ -18,6 +18,8 @@
     <meta name="keywords" content="ETF, dividend ETFs, total returns, yield optimization">
     <title>ETF Total Returns & Yields | Top Dividend ETFs</title>
 
+    <link rel="canonical" href="https://etftotalreturns.com/">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="ETF Total Returns & Yields">
     <meta property="og:description" content="Real-time ETF data with dividend yields and annualized returns. Free curated list of top dividend ETFs.">
@@ -25,7 +27,7 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://etf-total-returns.com">
+    <meta property="og:url" content="https://etftotalreturns.com">
 
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -168,6 +170,27 @@
         .compare-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 0 35px rgba(16, 185, 129, 0.6);
+        }
+
+        .matchups-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: transparent;
+            color: var(--green-light);
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1.5px solid var(--green-primary);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .matchups-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(16, 185, 129, 0.1);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
         }
 
         .premium-btn {
@@ -605,6 +628,97 @@
             font-size: 16px;
         }
 
+        /* ════════════════ POPULAR MATCHUPS ════════════════ */
+        .matchups-section {
+            margin: 0 0 60px;
+        }
+
+        .matchups-card {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(16, 185, 129, 0.05));
+            border: 1.5px solid var(--border-color);
+            border-radius: 14px;
+            padding: 32px 28px;
+            text-align: center;
+        }
+
+        .matchups-kicker {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--dark-bg);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .matchups-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--green-light) 0%, var(--white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .matchups-sub {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 22px;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .matchups-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .matchup-link {
+            display: inline-block;
+            padding: 9px 16px;
+            background: var(--surface-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            color: var(--green-light);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .matchup-link:hover {
+            border-color: var(--green-primary);
+            background: rgba(16, 185, 129, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .matchups-all-btn {
+            display: inline-block;
+            padding: 12px 26px;
+            background: linear-gradient(135deg, var(--green-primary), var(--green-light));
+            color: var(--dark-bg);
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 24px rgba(16, 185, 129, 0.4);
+        }
+
+        .matchups-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 36px rgba(16, 185, 129, 0.6);
+        }
+
         /* ════════════════ NETWORK SECTION ════════════════ */
         .network-section-etf {
             margin: 80px 0 40px;
@@ -874,6 +988,7 @@
             }
 
             .compare-btn,
+            .matchups-btn,
             .premium-btn {
                 padding: 8px 16px;
                 font-size: 12px;
@@ -1000,6 +1115,23 @@
                 font-size: 14px;
             }
 
+            .matchups-card {
+                padding: 24px 16px;
+            }
+
+            .matchups-title {
+                font-size: 20px;
+            }
+
+            .matchups-sub {
+                font-size: 13px;
+            }
+
+            .matchup-link {
+                font-size: 12px;
+                padding: 8px 13px;
+            }
+
             .network-title {
                 font-size: 22px;
             }
@@ -1053,6 +1185,7 @@
             }
 
             .compare-btn,
+            .matchups-btn,
             .premium-btn {
                 padding: 6px 12px;
                 font-size: 11px;
@@ -1171,6 +1304,19 @@
                 font-size: 13px;
             }
 
+            .matchups-card {
+                padding: 20px 12px;
+            }
+
+            .matchups-title {
+                font-size: 17px;
+            }
+
+            .matchup-link {
+                font-size: 11px;
+                padding: 7px 11px;
+            }
+
             .network-section-etf {
                 margin: 60px 0 30px;
                 padding: 40px 0;
@@ -1237,6 +1383,7 @@
             <div class="header-content">
                 <div class="logo" onclick="location.reload()">📈 ETF Total Returns</div>
                 <div class="header-buttons">
+                    <a href="/vs/" class="matchups-btn">🥊 ETF Matchups</a>
                     <a href="/compare.html" class="compare-btn">⚖️ Compare ETFs</a>
                     <a href="https://TopDividendETFsPRO.com" target="_blank" class="premium-btn">🌟 Premium</a>
                 </div>
@@ -1329,6 +1476,30 @@
             </div>
         </section>
 
+        <!-- ═════════ POPULAR MATCHUPS ═════════ -->
+        <section class="matchups-section">
+            <div class="container">
+                <div class="matchups-card">
+                    <div class="matchups-kicker">New</div>
+                    <h2 class="matchups-title">🥊 ETF vs ETF: 300+ Head-to-Head Comparisons</h2>
+                    <p class="matchups-sub">
+                        Every matchup compared by average annual total return since inception — updated daily. Start with a fan favorite:
+                    </p>
+                    <div class="matchups-links">
+                        <a href="/vs/schd-vs-vym.html" class="matchup-link">SCHD vs VYM</a>
+                        <a href="/vs/jepi-vs-jepq.html" class="matchup-link">JEPI vs JEPQ</a>
+                        <a href="/vs/jepi-vs-schd.html" class="matchup-link">JEPI vs SCHD</a>
+                        <a href="/vs/schd-vs-voo.html" class="matchup-link">SCHD vs VOO</a>
+                        <a href="/vs/qqqi-vs-spyi.html" class="matchup-link">QQQI vs SPYI</a>
+                        <a href="/vs/dgro-vs-schd.html" class="matchup-link">DGRO vs SCHD</a>
+                        <a href="/vs/jepq-vs-qyld.html" class="matchup-link">JEPQ vs QYLD</a>
+                        <a href="/vs/schd-vs-vig.html" class="matchup-link">SCHD vs VIG</a>
+                    </div>
+                    <a href="/vs/" class="matchups-all-btn">Browse All ETF Comparisons →</a>
+                </div>
+            </div>
+        </section>
+
         <!-- CLEAN BANNER BOTTOM -->
         <div class="container">
             <div class="banner">
@@ -1394,6 +1565,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-links">
+                    <a href="/vs/">ETF Comparisons</a>
                     <a href="terms.html">Terms of Use</a>
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="faq.html">FAQ</a>
