@@ -214,7 +214,7 @@
             box-shadow: 0 0 35px rgba(245, 158, 11, 0.6);
         }
 
-        /* ═══════════════ CLEAN BANNER ADS (only change) ═══════════════ */
+        /* ═══════════════ CLEAN BANNER ADS ═══════════════ */
         .banner {
             width: 90%;
             max-width: 1000px;
@@ -246,7 +246,6 @@
             font-weight: 600;
         }
 
-        /* Responsive for banners */
         @media (max-width: 760px) {
             .banner {
                 width: 100%;
@@ -355,7 +354,7 @@
         .section-title {
             font-size: 24px;
             font-weight: 700;
-            margin-bottom: 24px;
+            margin-bottom: 8px;
             color: var(--white);
             display: flex;
             align-items: center;
@@ -365,6 +364,27 @@
         .section-title::before {
             content: '📊';
             font-size: 28px;
+        }
+
+        /* ═══════ CLICK HINT ═══════ */
+        .click-hint {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--green-light);
+            background: rgba(16, 185, 129, 0.09);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--green-primary);
+            border-radius: 0 10px 10px 0;
+            padding: 12px 18px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .click-hint a {
+            color: var(--green-light);
+            font-weight: 800;
         }
 
         .filters-bar {
@@ -457,7 +477,6 @@
             font-weight: 700;
             padding: 22px 28px 18px;
             border-bottom: 1px solid var(--border-color);
-            display: block;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -493,7 +512,7 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 16.8px;
-            min-width: 600px;
+            min-width: 640px;
         }
 
         thead {
@@ -541,13 +560,37 @@
 
         tbody tr {
             border-bottom: 1px solid rgba(16, 185, 129, 0.1);
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
         }
 
-        tbody tr:hover {
-            background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid var(--green-primary);
-            padding-left: 3px;
+        /* ═══════ CLICKABLE ROWS ═══════ */
+        tbody tr.clickable-row {
+            cursor: pointer;
+        }
+
+        tbody tr.clickable-row:hover {
+            background: rgba(16, 185, 129, 0.1);
+            box-shadow: inset 3px 0 0 var(--green-primary);
+        }
+
+        tbody tr.clickable-row:hover .col-symbol {
+            color: var(--green-light);
+        }
+
+        tbody tr.clickable-row:hover .col-open {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .col-open {
+            text-align: center;
+            color: var(--green-light);
+            font-weight: 900;
+            font-size: 16px;
+            opacity: 0.25;
+            transform: translateX(-4px);
+            transition: all 0.25s ease;
+            min-width: 44px;
         }
 
         tbody tr:last-child {
@@ -571,6 +614,13 @@
             color: var(--white);
             letter-spacing: 1px;
             min-width: 60px;
+            transition: color 0.25s ease;
+        }
+
+        .col-symbol a,
+        .col-name a {
+            color: inherit;
+            text-decoration: none;
         }
 
         .col-name {
@@ -1017,6 +1067,11 @@
                 font-size: 14px;
             }
 
+            .click-hint {
+                font-size: 12.5px;
+                padding: 10px 14px;
+            }
+
             .filters-bar {
                 grid-template-columns: 1fr;
                 gap: 12px;
@@ -1032,7 +1087,7 @@
 
             .section-title {
                 font-size: 18px;
-                margin-bottom: 16px;
+                margin-bottom: 8px;
             }
 
             .section-title::before {
@@ -1056,7 +1111,7 @@
 
             table {
                 font-size: 14.4px;
-                min-width: 550px;
+                min-width: 590px;
             }
 
             th {
@@ -1097,6 +1152,11 @@
             .col-annual {
                 font-size: 13.2px;
                 min-width: 65px;
+            }
+
+            .col-open {
+                min-width: 34px;
+                opacity: 0.7;
             }
 
             .loading-state {
@@ -1244,7 +1304,7 @@
             }
 
             table {
-                min-width: 500px;
+                min-width: 540px;
                 font-size: 13.2px;
             }
 
@@ -1381,8 +1441,9 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo" onclick="location.reload()">📈 ETF Total Returns</div>
+                <div class="logo" onclick="location.href='/'">📈 ETF Total Returns</div>
                 <div class="header-buttons">
+                    <a href="/etf/" class="matchups-btn">📋 ETF Scorecards</a>
                     <a href="/vs/" class="matchups-btn">🥊 ETF Matchups</a>
                     <a href="/compare.html" class="compare-btn">⚖️ Compare ETFs</a>
                     <a href="https://TopDividendETFsPRO.com" target="_blank" class="premium-btn">🌟 Premium</a>
@@ -1414,7 +1475,6 @@
         <section class="dashboard-section">
             <div class="container">
 
-
                 <!-- CLEAN BANNER TOP -->
                 <div class="banner">
                     <a href="https://vegasharesetfs.com/VAIE" target="_blank">
@@ -1422,7 +1482,13 @@
                     </a>
                     <small>Sponsored by VegaShares</small>
                 </div>
+
                 <h2 class="section-title">ETF Database</h2>
+
+                <div class="click-hint">
+                    <span>👆</span>
+                    <span>Click any ETF row for its full scorecard — grade, income calculator, and head-to-head comparisons. <a href="/etf/">Browse all scorecards →</a></span>
+                </div>
 
                 <div class="filters-bar">
                     <div class="filter-group">
@@ -1465,6 +1531,7 @@
                                 <th onclick="sortTable(3)" class="center">Inception</th>
                                 <th onclick="sortTable(4)" class="center">Total Return %</th>
                                 <th onclick="sortTable(5)" class="center">Annualized Return %</th>
+                                <th class="center" style="cursor:default">Scorecard</th>
                             </tr>
                         </thead>
                         <tbody id="etfBody"></tbody>
@@ -1565,6 +1632,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-links">
+                    <a href="/etf/">ETF Scorecards</a>
                     <a href="/vs/">ETF Comparisons</a>
                     <a href="terms.html">Terms of Use</a>
                     <a href="privacy.html">Privacy Policy</a>
@@ -1590,6 +1658,15 @@
         let allRows = [];
         let allData = [];
         let sortState = { col: 5, dir: 'desc' };
+
+        // Ticker → scorecard URL slug (must match generate-etf-pages.js)
+        function etfSlug(sym) {
+            return String(sym).toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        function etfUrl(sym) {
+            return '/etf/' + etfSlug(sym) + '.html';
+        }
 
         function calculateAnnualized(totalReturnStr, inceptionStr) {
             try {
@@ -1644,19 +1721,32 @@
                 const return_val = parts[7];
                 const inception = parts[9] || 'N/A';
                 const annualAvg = calculateAnnualized(return_val, inception);
+                const targetUrl = etfUrl(symbol);
 
                 allData.push({ symbol, name, yield: yield_val, return: return_val, inception, annual: annualAvg });
 
                 const tr = document.createElement('tr');
-                
+                tr.className = 'clickable-row';
+                tr.setAttribute('role', 'link');
+                tr.setAttribute('tabindex', '0');
+                tr.setAttribute('aria-label', symbol + ' scorecard');
+
+                // Whole row navigates to the scorecard page
+                tr.addEventListener('click', function (ev) {
+                    if (ev.target.closest('a')) return; // let real links do their thing
+                    window.location.href = targetUrl;
+                });
+                tr.addEventListener('keydown', function (ev) {
+                    if (ev.key === 'Enter' || ev.key === ' ') {
+                        ev.preventDefault();
+                        window.location.href = targetUrl;
+                    }
+                });
+
                 const tdSymbol = document.createElement('td');
                 tdSymbol.className = 'col-symbol';
                 const symbolLink = document.createElement('a');
-                symbolLink.href = "https://topdividendetfs.com/";
-                symbolLink.target = "_blank";
-                symbolLink.style.color = "inherit";
-                symbolLink.style.textDecoration = "none";
-                symbolLink.style.cursor = "pointer";
+                symbolLink.href = targetUrl;
                 symbolLink.textContent = symbol;
                 tdSymbol.appendChild(symbolLink);
                 tr.appendChild(tdSymbol);
@@ -1664,11 +1754,7 @@
                 const tdName = document.createElement('td');
                 tdName.className = 'col-name';
                 const nameLink = document.createElement('a');
-                nameLink.href = "https://topdividendetfs.com/";
-                nameLink.target = "_blank";
-                nameLink.style.color = "inherit";
-                nameLink.style.textDecoration = "none";
-                nameLink.style.cursor = "pointer";
+                nameLink.href = targetUrl;
                 nameLink.textContent = name;
                 tdName.appendChild(nameLink);
                 tr.appendChild(tdName);
@@ -1686,13 +1772,18 @@
                 const tdReturn = document.createElement('td');
                 tdReturn.className = 'col-return';
                 const returnNum = parseFloat(return_val);
-                tdReturn.innerHTML = `<span class="${returnNum >= 0 ? 'return-positive' : 'return-negative'}">${return_val}</span>`;
+                tdReturn.innerHTML = '<span class="' + (returnNum >= 0 ? 'return-positive' : 'return-negative') + '">' + return_val + '</span>';
                 tr.appendChild(tdReturn);
 
                 const tdAnnual = document.createElement('td');
                 tdAnnual.className = 'col-annual';
                 tdAnnual.textContent = annualAvg;
                 tr.appendChild(tdAnnual);
+
+                const tdOpen = document.createElement('td');
+                tdOpen.className = 'col-open';
+                tdOpen.textContent = '→';
+                tr.appendChild(tdOpen);
 
                 tbody.appendChild(tr);
                 allRows.push(tr);
@@ -1738,7 +1829,7 @@
             rows.forEach(r => tbody.appendChild(r));
 
             document.querySelectorAll('th').forEach((th, i) => {
-                th.className = i === col ? `sort-${sortState.dir}` : '';
+                th.className = i === col ? 'sort-' + sortState.dir : (i >= 2 ? 'center' : '');
             });
 
             applyFilters();
