@@ -1,0 +1,38 @@
+name: Build ETF Scorecard Pages
+
+on:
+  schedule:
+    # 07:10 UTC daily (about 3:10am ET) — after the sheet refreshes
+    - cron: '10 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate ETF scorecard pages
+        run: node generate-etf-pages.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add etf/ sitemap-etf.xml
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto-update ETF scorecard pages $(date -u +'%Y-%m-%d')"
+            git push
+          fi
