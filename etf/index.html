@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All ETF Scorecards — Yield, Total Return &amp; Grades | ETF Total Returns</title>
+<meta name="description" content="Free scorecards for 141 dividend and income ETFs. Compare distribution yield against real total return, with an income calculator on every page.">
+<link rel="canonical" href="https://etftotalreturns.com/etf/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://etftotalreturns.com/etf/">
+<meta property="og:title" content="All ETF Scorecards — Yield, Total Return &amp; Grades | ETF Total Returns">
+<meta property="og:description" content="Free scorecards for 141 dividend and income ETFs. Compare distribution yield against real total return, with an income calculator on every page.">
+<meta property="og:image" content="https://raw.githubusercontent.com/benjiesiegel1414/etftotalreturns/main/etf.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9929351005136304" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VYCX30S0EC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VYCX30S0EC');</script>
+<style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--dark-bg:#0A1F1E;--surface-dark:#0F2A28;--surface-light:#152D2A;--green-primary:#10B981;--green-light:#34D399;--green-dark:#059669;--white:#fff;--text-primary:#fff;--text-secondary:#E5E7EB;--text-muted:#9CA3AF;--border-color:rgba(16,185,129,.2);--border-light:rgba(16,185,129,.15);--danger:#EF4444;--accent-gold:#F59E0B}
+    html,body{margin:0;padding:0;overflow-x:hidden}
+    body{font-family:'Sora',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:linear-gradient(135deg,var(--dark-bg) 0%,var(--surface-dark) 50%,var(--dark-bg) 100%);background-attachment:fixed;color:var(--text-primary);display:flex;flex-direction:column;min-height:100vh;line-height:1.6}
+    body::before{content:'';position:fixed;inset:0;background:radial-gradient(circle at 20% 50%,rgba(16,185,129,.08) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(16,185,129,.05) 0%,transparent 50%);pointer-events:none;z-index:0}
+    .container{width:100%;max-width:1200px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+    a{color:inherit}
+    header{position:sticky;top:0;z-index:1000;background:rgba(10,31,30,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-color);padding:16px 0;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+    .header-content{display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .header-buttons{display:flex;gap:12px;align-items:center}
+    .logo{font-size:20px;font-weight:800;letter-spacing:-.5px;background:linear-gradient(135deg,var(--green-light),var(--green-primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+    .compare-btn{padding:10px 20px;background:linear-gradient(135deg,var(--green-primary),var(--green-light));color:var(--dark-bg);font-weight:800;font-size:14px;text-decoration:none;border-radius:8px;box-shadow:0 0 20px rgba(16,185,129,.4);white-space:nowrap;transition:all .3s}
+    .compare-btn:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(16,185,129,.6)}
+    .matchups-btn{padding:10px 20px;background:transparent;color:var(--green-light);font-weight:800;font-size:14px;text-decoration:none;border-radius:8px;border:1.5px solid var(--green-primary);white-space:nowrap;transition:all .3s}
+    .matchups-btn:hover{transform:translateY(-2px);background:rgba(16,185,129,.1)}
+    .premium-btn{padding:10px 20px;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:var(--dark-bg);font-weight:800;font-size:14px;text-decoration:none;border-radius:8px;box-shadow:0 0 20px rgba(245,158,11,.4);white-space:nowrap;transition:all .3s}
+    .premium-btn:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(245,158,11,.6)}
+    .banner{width:90%;max-width:1000px;margin:24px auto 32px;display:flex;flex-direction:column;align-items:center;gap:8px}
+    .banner img{display:block;max-width:100%;height:auto;transition:transform .3s}
+    .banner:hover img{transform:scale(1.02)}
+    .banner small{color:var(--text-muted);font-size:.78em;font-weight:600}
+    .crumbs{padding:20px 0 0;font-size:13px;color:var(--text-muted)}
+    .crumbs a{color:var(--green-light);text-decoration:none}
+    .crumbs a:hover{text-decoration:underline}
+    .scorecard-hero{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;padding:32px 0 8px}
+    .grade-orb{width:150px;height:150px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;border:4px solid;position:relative}
+    .grade-orb .letter{font-size:56px;line-height:1;letter-spacing:-2px}
+    .grade-orb .out-of{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:.85;margin-top:6px}
+    .tone-elite{border-color:var(--green-primary);color:var(--green-light);background:radial-gradient(circle,rgba(16,185,129,.22),rgba(16,185,129,.05));box-shadow:0 0 50px rgba(16,185,129,.35)}
+    .tone-strong{border-color:var(--green-dark);color:var(--green-light);background:radial-gradient(circle,rgba(16,185,129,.14),rgba(16,185,129,.03));box-shadow:0 0 40px rgba(16,185,129,.22)}
+    .tone-fair{border-color:var(--accent-gold);color:var(--accent-gold);background:radial-gradient(circle,rgba(245,158,11,.14),rgba(245,158,11,.03));box-shadow:0 0 40px rgba(245,158,11,.22)}
+    .tone-weak{border-color:var(--danger);color:var(--danger);background:radial-gradient(circle,rgba(239,68,68,.14),rgba(239,68,68,.03));box-shadow:0 0 40px rgba(239,68,68,.22)}
+    .ticker-line{font-family:'JetBrains Mono',monospace;font-size:clamp(38px,6vw,60px);font-weight:900;letter-spacing:-1px;line-height:1;background:linear-gradient(135deg,var(--green-light),var(--white));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .fund-name{font-size:18px;color:var(--text-secondary);margin-top:8px;font-weight:500}
+    .verdict{margin-top:16px;padding:14px 18px;border-left:3px solid var(--green-primary);background:rgba(16,185,129,.07);border-radius:0 10px 10px 0;font-size:15px;color:var(--text-secondary)}
+    .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:16px;margin:36px 0 8px}
+    .metric{background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(16,185,129,.03));border:1px solid var(--border-color);border-radius:14px;padding:20px 18px;text-align:center}
+    .metric .lbl{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:10px}
+    .metric .val{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:900;line-height:1.1}
+    .metric .sub{font-size:11px;color:var(--text-muted);margin-top:6px}
+    .pos{color:var(--green-light)}.neg{color:var(--danger)}.neutral{color:var(--white)}.gold{color:var(--accent-gold)}
+    .section{margin:56px 0}
+    .sec-title{font-size:24px;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+    .sec-sub{color:var(--text-muted);font-size:14px;margin-bottom:24px;max-width:720px}
+    .panel{background:linear-gradient(135deg,rgba(16,185,129,.06),rgba(16,185,129,.02));border:1px solid var(--border-color);border-radius:16px;padding:28px}
+    .bar-row{margin-bottom:22px}
+    .bar-row:last-child{margin-bottom:0}
+    .bar-head{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:8px}
+    .bar-head .pts{font-family:'JetBrains Mono',monospace;color:var(--green-light)}
+    .bar-track{height:10px;background:rgba(255,255,255,.07);border-radius:999px;overflow:hidden}
+    .bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--green-dark),var(--green-light))}
+    .bar-note{font-size:12px;color:var(--text-muted);margin-top:7px}
+    .calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-bottom:26px}
+    .calc-field label{display:block;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:9px}
+    .calc-field input,.calc-field select{width:100%;padding:13px 15px;background:var(--surface-dark);border:1.5px solid var(--border-light);color:var(--text-primary);border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:16px;outline:none;transition:all .3s}
+    .calc-field input:focus,.calc-field select:focus{border-color:var(--green-primary);box-shadow:0 0 0 3px rgba(16,185,129,.15)}
+    .calc-out{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px}
+    .calc-cell{background:rgba(16,185,129,.08);border:1px solid var(--border-color);border-radius:12px;padding:18px 14px;text-align:center}
+    .calc-cell .k{font-size:10.5px;letter-spacing:1.1px;text-transform:uppercase;color:var(--text-muted);font-weight:700;margin-bottom:9px}
+    .calc-cell .v{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:900;color:var(--green-light)}
+    .calc-disclaim{margin-top:18px;font-size:12px;color:var(--text-muted);line-height:1.6}
+    .vs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:12px}
+    .vs-card{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 17px;background:var(--surface-dark);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;transition:all .25s}
+    .vs-card:hover{border-color:var(--green-primary);background:rgba(16,185,129,.1);transform:translateY(-3px)}
+    .vs-card .pair{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:13.5px;color:var(--green-light)}
+    .vs-card .go{color:var(--text-muted);font-size:15px}
+    .peer-table{width:100%;border-collapse:collapse;font-size:15px}
+    .peer-table th{text-align:left;padding:14px 12px;font-size:11.5px;letter-spacing:.9px;text-transform:uppercase;color:var(--green-light);font-weight:700;border-bottom:2px solid var(--border-color)}
+    .peer-table th.c,.peer-table td.c{text-align:center}
+    .peer-table td{padding:13px 12px;border-bottom:1px solid rgba(16,185,129,.1)}
+    .peer-table tr:last-child td{border-bottom:none}
+    .peer-table tbody tr{transition:background .25s;cursor:pointer}
+    .peer-table tbody tr:hover{background:rgba(16,185,129,.08)}
+    .peer-table a{text-decoration:none;font-family:'JetBrains Mono',monospace;font-weight:900;color:var(--white)}
+    .peer-table tbody tr:hover a{color:var(--green-light)}
+    .peer-name{color:var(--text-secondary);font-size:13.5px}
+    .az-wrap{display:flex;flex-wrap:wrap;gap:8px}
+    .az-chip{padding:8px 14px;background:var(--surface-dark);border:1px solid var(--border-light);border-radius:999px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12.5px;color:var(--green-light);text-decoration:none;transition:all .2s}
+    .az-chip:hover{border-color:var(--green-primary);background:rgba(16,185,129,.12);transform:translateY(-2px)}
+    .faq-item{border-bottom:1px solid var(--border-light);padding:20px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-weight:800;font-size:16px;margin-bottom:9px;color:var(--white)}
+    .faq-a{color:var(--text-secondary);font-size:14.5px;line-height:1.7}
+    .site-cards-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:640px){.site-cards-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1024px){.site-cards-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}}
+    .network-card{background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(16,185,129,.04));border:1.5px solid var(--border-color);border-radius:14px;padding:22px 18px;text-decoration:none;color:var(--text-primary);display:flex;flex-direction:column;align-items:center;text-align:center;transition:all .3s}
+    .network-card:hover{border-color:var(--green-primary);transform:translateY(-4px);box-shadow:0 8px 32px rgba(16,185,129,.2)}
+    .network-card.pro-card{background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(245,158,11,.05));border-color:rgba(245,158,11,.3)}
+    .network-card.pro-card:hover{border-color:var(--accent-gold)}
+    .card-icon{font-size:30px;margin-bottom:10px}
+    .card-name{font-weight:800;font-size:14.5px;color:var(--green-light);margin-bottom:7px}
+    .network-card.pro-card .card-name{color:var(--accent-gold)}
+    .card-desc{font-size:12.5px;color:var(--text-secondary);line-height:1.5;flex:1}
+    footer{background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(16,185,129,.04));border-top:1px solid var(--border-color);padding:50px 0 30px;margin-top:auto}
+    .footer-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:26px}
+    .footer-links{display:flex;gap:22px;flex-wrap:wrap}
+    .footer-links a{color:var(--text-secondary);text-decoration:none;font-size:13.5px}
+    .footer-links a:hover{color:var(--green-light)}
+    .footer-disclaimer{font-size:12.5px;color:var(--text-muted);max-width:640px;line-height:1.55}
+    .footer-copyright{color:var(--text-muted);font-size:12.5px;white-space:nowrap}
+    @media(max-width:820px){
+      .container{padding:0 16px}
+      .header-content{flex-direction:column;gap:8px}
+      .header-buttons{width:100%;flex-direction:column;gap:8px}
+      .compare-btn,.matchups-btn,.premium-btn{width:100%;text-align:center;font-size:12px;padding:9px 14px}
+      .scorecard-hero{grid-template-columns:1fr;justify-items:center;text-align:center;gap:20px}
+      .grade-orb{width:120px;height:120px}
+      .grade-orb .letter{font-size:44px}
+      .verdict{text-align:left}
+      .peer-table{font-size:13.5px}
+      .peer-table th,.peer-table td{padding:11px 8px}
+      .footer-content{flex-direction:column;text-align:center}
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">📈 ETF Total Returns</a>
+        <div class="header-buttons">
+          <a href="/vs/" class="matchups-btn">🥊 ETF Matchups</a>
+          <a href="/compare.html" class="compare-btn">⚖️ Compare ETFs</a>
+          <a href="https://TopDividendETFsPRO.com" target="_blank" rel="noopener" class="premium-btn">🌟 Premium</a>
+        </div>
+      </div>
+    </div>
+  </header>
+<main>
+  <div class="container">
+    <nav class="crumbs"><a href="/">Home</a> › <span>ETFs</span></nav>
+    <section class="section" style="margin-top:24px">
+      <h1 class="ticker-line" style="font-size:clamp(30px,5vw,46px)">All ETF Scorecards</h1>
+      <p class="sec-sub" style="margin-top:12px">Every fund we track, graded on total return rather than headline yield. Click any row for the full scorecard, income calculator, and head-to-head comparisons.</p>
+      <div class="banner">
+    <a href="https://vegasharesetfs.com/VAIE" target="_blank" rel="noopener sponsored">
+      <img src="https://raw.githubusercontent.com/benjiesiegel1414/etftotalreturns/main/vaie-ad-728x90px.png" alt="VAIE - Sponsored Advertisement" loading="lazy">
+    </a>
+    <small>Sponsored by VegaShares</small>
+  </div>
+      <div class="panel" style="padding:8px 20px">
+        <table class="peer-table">
+          <thead><tr><th class="c">#</th><th>Symbol</th><th>Name</th><th class="c">Yield</th><th class="c">Total Return</th><th class="c">Annualized</th><th class="c">Grade</th></tr></thead>
+          <tbody><tr onclick="location.href='/etf/nvdy.html'">
+    <td class="c" style="color:var(--text-muted)">1</td>
+    <td><a href="/etf/nvdy.html">NVDY</a></td>
+    <td class="peer-name">YieldMax NVDA Option Income Strategy ETF</td>
+    <td class="c">40%</td>
+    <td class="c pos">361%</td>
+    <td class="c pos">59.59%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/chpy.html'">
+    <td class="c" style="color:var(--text-muted)">2</td>
+    <td><a href="/etf/chpy.html">CHPY</a></td>
+    <td class="peer-name">YieldMax Semiconductor Portfolio Option Income ETF</td>
+    <td class="c">41%</td>
+    <td class="c pos">173%</td>
+    <td class="c pos">107.90%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/soxy.html'">
+    <td class="c" style="color:var(--text-muted)">3</td>
+    <td><a href="/etf/soxy.html">SOXY</a></td>
+    <td class="peer-name">YieldMax® Target 12™ Semiconductor Option Income ETF</td>
+    <td class="c">12.0%</td>
+    <td class="c pos">130%</td>
+    <td class="c pos">63.06%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/tylg.html'">
+    <td class="c" style="color:var(--text-muted)">4</td>
+    <td><a href="/etf/tylg.html">TYLG</a></td>
+    <td class="peer-name">Information Technology Covered Call &amp; Growth ETF</td>
+    <td class="c">11.0%</td>
+    <td class="c pos">137%</td>
+    <td class="c pos">25.99%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/schg.html'">
+    <td class="c" style="color:var(--text-muted)">5</td>
+    <td><a href="/etf/schg.html">SCHG</a></td>
+    <td class="peer-name">Schwab U.S. Growth ETF</td>
+    <td class="c">0.4%</td>
+    <td class="c pos">1185%</td>
+    <td class="c pos">16.54%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/ovl.html'">
+    <td class="c" style="color:var(--text-muted)">6</td>
+    <td><a href="/etf/ovl.html">OVL</a></td>
+    <td class="peer-name">Overlay Shares Large Cap Equity ETF</td>
+    <td class="c">10.5%</td>
+    <td class="c pos">209%</td>
+    <td class="c pos">17.82%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/voo.html'">
+    <td class="c" style="color:var(--text-muted)">7</td>
+    <td><a href="/etf/voo.html">VOO</a></td>
+    <td class="peer-name">Vanguard S&amp;P 500 ETF</td>
+    <td class="c">1.1%</td>
+    <td class="c pos">840%</td>
+    <td class="c pos">15.09%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/idvo.html'">
+    <td class="c" style="color:var(--text-muted)">8</td>
+    <td><a href="/etf/idvo.html">IDVO</a></td>
+    <td class="peer-name">Amplify CWP International Enhanced Dividend Income ETF</td>
+    <td class="c">6.0%</td>
+    <td class="c pos">117%</td>
+    <td class="c pos">21.74%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/goow.html'">
+    <td class="c" style="color:var(--text-muted)">9</td>
+    <td><a href="/etf/goow.html">GOOW</a></td>
+    <td class="peer-name">Roundhill GOOGL WeeklyPay ETF</td>
+    <td class="c">33.0%</td>
+    <td class="c pos">92%</td>
+    <td class="c pos">84.74%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/bali.html'">
+    <td class="c" style="color:var(--text-muted)">10</td>
+    <td><a href="/etf/bali.html">BALI</a></td>
+    <td class="peer-name">iShares US Large Cap Premium Income Active ETF</td>
+    <td class="c">7.0%</td>
+    <td class="c pos">79%</td>
+    <td class="c pos">22.33%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/gpiq.html'">
+    <td class="c" style="color:var(--text-muted)">11</td>
+    <td><a href="/etf/gpiq.html">GPIQ</a></td>
+    <td class="peer-name">Goldman Sachs Nasdaq-100 Premium Income ETF</td>
+    <td class="c">10.0%</td>
+    <td class="c pos">99%</td>
+    <td class="c pos">27.72%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/qdpl.html'">
+    <td class="c" style="color:var(--text-muted)">12</td>
+    <td><a href="/etf/qdpl.html">QDPL</a></td>
+    <td class="peer-name">Pacer Metaurus US Large Cap Dividend Multiplier 400 ETF</td>
+    <td class="c">5.18%</td>
+    <td class="c pos">82%</td>
+    <td class="c pos">37.16%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/qdvo.html'">
+    <td class="c" style="color:var(--text-muted)">13</td>
+    <td><a href="/etf/qdvo.html">QDVO</a></td>
+    <td class="peer-name">Amplify CWP Growth &amp; Income ETF</td>
+    <td class="c">10.0%</td>
+    <td class="c pos">48%</td>
+    <td class="c pos">21.86%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/kqqq.html'">
+    <td class="c" style="color:var(--text-muted)">14</td>
+    <td><a href="/etf/kqqq.html">KQQQ</a></td>
+    <td class="peer-name">Kurv Technology Titans Select ETF</td>
+    <td class="c">13.00%</td>
+    <td class="c pos">49%</td>
+    <td class="c pos">21.27%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/nvii.html'">
+    <td class="c" style="color:var(--text-muted)">15</td>
+    <td><a href="/etf/nvii.html">NVII</a></td>
+    <td class="peer-name">REX NVDA Growth &amp; Income ETF</td>
+    <td class="c">47%</td>
+    <td class="c pos">78%</td>
+    <td class="c pos">60.49%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/divo.html'">
+    <td class="c" style="color:var(--text-muted)">16</td>
+    <td><a href="/etf/divo.html">DIVO</a></td>
+    <td class="peer-name">Amplify CWP Enhanced Dividend Income ETF</td>
+    <td class="c">4.8%</td>
+    <td class="c pos">226%</td>
+    <td class="c pos">13.00%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/schd.html'">
+    <td class="c" style="color:var(--text-muted)">17</td>
+    <td><a href="/etf/schd.html">SCHD</a></td>
+    <td class="peer-name">Schwab U.S. Dividend Equity ETF</td>
+    <td class="c">3.4%</td>
+    <td class="c pos">561%</td>
+    <td class="c pos">13.59%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/dgro.html'">
+    <td class="c" style="color:var(--text-muted)">18</td>
+    <td><a href="/etf/dgro.html">DGRO</a></td>
+    <td class="peer-name">iShares Core Dividend Growth ETF</td>
+    <td class="c">2.0%</td>
+    <td class="c pos">328%</td>
+    <td class="c pos">12.67%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/dgrw.html'">
+    <td class="c" style="color:var(--text-muted)">19</td>
+    <td><a href="/etf/dgrw.html">DGRW</a></td>
+    <td class="peer-name">WisdomTree U.S. Quality Dividend Growth Fund</td>
+    <td class="c">1.5%</td>
+    <td class="c pos">421%</td>
+    <td class="c pos">13.28%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/fdvv.html'">
+    <td class="c" style="color:var(--text-muted)">20</td>
+    <td><a href="/etf/fdvv.html">FDVV</a></td>
+    <td class="peer-name">Fidelity High Dividend ETF</td>
+    <td class="c">2.8%</td>
+    <td class="c pos">262%</td>
+    <td class="c pos">13.84%</td>
+    <td class="c gold"><strong>A+</strong></td></tr>
+<tr onclick="location.href='/etf/cows.html'">
+    <td class="c" style="color:var(--text-muted)">21</td>
+    <td><a href="/etf/cows.html">COWS</a></td>
+    <td class="peer-name">Amplify Cash Flow Dividend Leaders ETF</td>
+    <td class="c">3.1%</td>
+    <td class="c pos">70%</td>
+    <td class="c pos">19.89%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/maxi.html'">
+    <td class="c" style="color:var(--text-muted)">22</td>
+    <td><a href="/etf/maxi.html">MAXI</a></td>
+    <td class="peer-name">Simplify Bitcoin Strategy PLUS Income ETF</td>
+    <td class="c">9.0%</td>
+    <td class="c pos">83%</td>
+    <td class="c pos">16.85%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/qqqi.html'">
+    <td class="c" style="color:var(--text-muted)">23</td>
+    <td><a href="/etf/qqqi.html">QQQI</a></td>
+    <td class="peer-name">NEOS Nasdaq 100 High Income ETF</td>
+    <td class="c">14.0%</td>
+    <td class="c pos">60%</td>
+    <td class="c pos">20.06%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/spyh.html'">
+    <td class="c" style="color:var(--text-muted)">24</td>
+    <td><a href="/etf/spyh.html">SPYH</a></td>
+    <td class="peer-name">NEOS S&amp;P 500 Hedged Equity Income ETF</td>
+    <td class="c">7.9%</td>
+    <td class="c pos">31%</td>
+    <td class="c pos">21.75%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/mlpi.html'">
+    <td class="c" style="color:var(--text-muted)">25</td>
+    <td><a href="/etf/mlpi.html">MLPI</a></td>
+    <td class="peer-name">MLP &amp; Energy Infrastructure High Income ETF</td>
+    <td class="c">14.8%</td>
+    <td class="c pos">22%</td>
+    <td class="c pos">34.97%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/drky.html'">
+    <td class="c" style="color:var(--text-muted)">26</td>
+    <td><a href="/etf/drky.html">DRKY</a></td>
+    <td class="peer-name">VistaShares Target 15™ DRUKMacro Distribution ETF</td>
+    <td class="c">15.0%</td>
+    <td class="c pos">21%</td>
+    <td class="c pos">24.98%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/tdaq.html'">
+    <td class="c" style="color:var(--text-muted)">27</td>
+    <td><a href="/etf/tdaq.html">TDAQ</a></td>
+    <td class="peer-name">TappAlpha Innovation 100 Growth &amp; Daily Income ETF</td>
+    <td class="c">17.4%</td>
+    <td class="c pos">28%</td>
+    <td class="c pos">29.75%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/kgld.html'">
+    <td class="c" style="color:var(--text-muted)">28</td>
+    <td><a href="/etf/kgld.html">KGLD</a></td>
+    <td class="peer-name">Kurv Gold Enhanced Income ETF</td>
+    <td class="c">15.6%</td>
+    <td class="c pos">31%</td>
+    <td class="c pos">27.64%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/xlei.html'">
+    <td class="c" style="color:var(--text-muted)">29</td>
+    <td><a href="/etf/xlei.html">XLEI</a></td>
+    <td class="peer-name">State Street Energy Select Sector SPDR Premium Income ETF</td>
+    <td class="c">21.0%</td>
+    <td class="c pos">37%</td>
+    <td class="c pos">35.00%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/xlki.html'">
+    <td class="c" style="color:var(--text-muted)">30</td>
+    <td><a href="/etf/xlki.html">XLKI</a></td>
+    <td class="peer-name">State Street Technology Select Sector SPDR Premium Income ETF</td>
+    <td class="c">19.0%</td>
+    <td class="c pos">31%</td>
+    <td class="c pos">29.35%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/spyi.html'">
+    <td class="c" style="color:var(--text-muted)">31</td>
+    <td><a href="/etf/spyi.html">SPYI</a></td>
+    <td class="peer-name">NEOS S&amp;P 500 High Income ETF</td>
+    <td class="c">12.04%</td>
+    <td class="c pos">78%</td>
+    <td class="c pos">15.67%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/jepq.html'">
+    <td class="c" style="color:var(--text-muted)">32</td>
+    <td><a href="/etf/jepq.html">JEPQ</a></td>
+    <td class="peer-name">JPMorgan NASDAQ Equity Premium Income ETF</td>
+    <td class="c">12.8%</td>
+    <td class="c pos">90%</td>
+    <td class="c pos">16.15%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/ispy.html'">
+    <td class="c" style="color:var(--text-muted)">33</td>
+    <td><a href="/etf/ispy.html">ISPY</a></td>
+    <td class="peer-name">ProShares S&amp;P 500 High Income ETF</td>
+    <td class="c">10.0%</td>
+    <td class="c pos">56%</td>
+    <td class="c pos">18.18%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/ahd.html'">
+    <td class="c" style="color:var(--text-muted)">34</td>
+    <td><a href="/etf/ahd.html">AHD</a></td>
+    <td class="peer-name">GraniteShares Autocallable HOOD ETF</td>
+    <td class="c">27%</td>
+    <td class="c pos">14%</td>
+    <td class="c pos">68.06%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/vig.html'">
+    <td class="c" style="color:var(--text-muted)">35</td>
+    <td><a href="/etf/vig.html">VIG</a></td>
+    <td class="peer-name">Vanguard Dividend Appreciation ETF</td>
+    <td class="c">1.6%</td>
+    <td class="c pos">633%</td>
+    <td class="c pos">10.30%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/hdv.html'">
+    <td class="c" style="color:var(--text-muted)">36</td>
+    <td><a href="/etf/hdv.html">HDV</a></td>
+    <td class="peer-name">iShares Core High Dividend ETF</td>
+    <td class="c">3.3%</td>
+    <td class="c pos">395%</td>
+    <td class="c pos">10.96%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/nobl.html'">
+    <td class="c" style="color:var(--text-muted)">37</td>
+    <td><a href="/etf/nobl.html">NOBL</a></td>
+    <td class="peer-name">ProShares S&amp;P 500 Dividend Aristocrats ETF</td>
+    <td class="c">2.1%</td>
+    <td class="c pos">273%</td>
+    <td class="c pos">10.79%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/vymi.html'">
+    <td class="c" style="color:var(--text-muted)">38</td>
+    <td><a href="/etf/vymi.html">VYMI</a></td>
+    <td class="peer-name">Vanguard International High Dividend Yield ETF</td>
+    <td class="c">4.0%</td>
+    <td class="c pos">203%</td>
+    <td class="c pos">11.17%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/odte.html'">
+    <td class="c" style="color:var(--text-muted)">39</td>
+    <td><a href="/etf/odte.html">ODTE</a></td>
+    <td class="peer-name">ODTE  VegaShares SPX NDX RTY Premium Income ETF</td>
+    <td class="c">14.00%</td>
+    <td class="c pos">10%</td>
+    <td class="c pos">29.13%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/spci.html'">
+    <td class="c" style="color:var(--text-muted)">40</td>
+    <td><a href="/etf/spci.html">SPCI</a></td>
+    <td class="peer-name">Tuttle Capital Space Industry Income Blast ETF</td>
+    <td class="c">28%</td>
+    <td class="c pos">17%</td>
+    <td class="c pos">44.03%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/ovs.html'">
+    <td class="c" style="color:var(--text-muted)">41</td>
+    <td><a href="/etf/ovs.html">OVS</a></td>
+    <td class="peer-name">Overlay Shares Small Cap Equity ETF (OVS)</td>
+    <td class="c">10.50%</td>
+    <td class="c pos">130%</td>
+    <td class="c pos">12.87%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/amdy.html'">
+    <td class="c" style="color:var(--text-muted)">42</td>
+    <td><a href="/etf/amdy.html">AMDY</a></td>
+    <td class="peer-name">YieldMax AMD Option Income Strategy ETF</td>
+    <td class="c">65%</td>
+    <td class="c pos">218%</td>
+    <td class="c pos">48.80%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/iwmi.html'">
+    <td class="c" style="color:var(--text-muted)">43</td>
+    <td><a href="/etf/iwmi.html">IWMI</a></td>
+    <td class="peer-name">NEOS Russell 2000 High Income ETF</td>
+    <td class="c">14.4%</td>
+    <td class="c pos">47%</td>
+    <td class="c pos">19.71%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/xspi.html'">
+    <td class="c" style="color:var(--text-muted)">44</td>
+    <td><a href="/etf/xspi.html">XSPI</a></td>
+    <td class="peer-name">NEOS Boosted S&amp;P 500 High Income ETF</td>
+    <td class="c">17.0%</td>
+    <td class="c pos">13%</td>
+    <td class="c pos">25.12%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/xqqi.html'">
+    <td class="c" style="color:var(--text-muted)">45</td>
+    <td><a href="/etf/xqqi.html">XQQI</a></td>
+    <td class="peer-name">NEOS Boosted Nasdaq-100 High Income ETF</td>
+    <td class="c">21.0%</td>
+    <td class="c pos">15%</td>
+    <td class="c pos">29.21%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/tdax.html'">
+    <td class="c" style="color:var(--text-muted)">46</td>
+    <td><a href="/etf/tdax.html">TDAX</a></td>
+    <td class="peer-name">TDAQ LIFT ETF</td>
+    <td class="c">24%</td>
+    <td class="c pos">17%</td>
+    <td class="c pos">29.60%</td>
+    <td class="c gold"><strong>A</strong></td></tr>
+<tr onclick="location.href='/etf/plty.html'">
+    <td class="c" style="color:var(--text-muted)">47</td>
+    <td><a href="/etf/plty.html">PLTY</a></td>
+    <td class="peer-name">YieldMax PLTR Option Income Strategy ETF</td>
+    <td class="c">100%</td>
+    <td class="c pos">180%</td>
+    <td class="c pos">74.11%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/iaui.html'">
+    <td class="c" style="color:var(--text-muted)">48</td>
+    <td><a href="/etf/iaui.html">IAUI</a></td>
+    <td class="peer-name">NEOS Gold High Income ETF</td>
+    <td class="c">11.8%</td>
+    <td class="c pos">20%</td>
+    <td class="c pos">16.45%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/nihi.html'">
+    <td class="c" style="color:var(--text-muted)">49</td>
+    <td><a href="/etf/nihi.html">NIHI</a></td>
+    <td class="peer-name">NEOS MSCI EAFE High Income ETF</td>
+    <td class="c">9.9%</td>
+    <td class="c pos">18%</td>
+    <td class="c pos">19.89%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/tspy.html'">
+    <td class="c" style="color:var(--text-muted)">50</td>
+    <td><a href="/etf/tspy.html">TSPY</a></td>
+    <td class="peer-name">TappAlpha S&amp;P 500 Growth &amp; Daily Income ETF</td>
+    <td class="c">14.2%</td>
+    <td class="c pos">39%</td>
+    <td class="c pos">17.85%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/vym.html'">
+    <td class="c" style="color:var(--text-muted)">51</td>
+    <td><a href="/etf/vym.html">VYM</a></td>
+    <td class="peer-name">Vanguard High Dividend Yield ETF</td>
+    <td class="c">2.5%</td>
+    <td class="c pos">502%</td>
+    <td class="c pos">9.51%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/sphd.html'">
+    <td class="c" style="color:var(--text-muted)">52</td>
+    <td><a href="/etf/sphd.html">SPHD</a></td>
+    <td class="peer-name">Invesco S&amp;P 500 High Dividend Low Volatility ETF</td>
+    <td class="c">3.6%</td>
+    <td class="c pos">262%</td>
+    <td class="c pos">9.75%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/dvy.html'">
+    <td class="c" style="color:var(--text-muted)">53</td>
+    <td><a href="/etf/dvy.html">DVY</a></td>
+    <td class="peer-name">iShares Select Dividend ETF</td>
+    <td class="c">3.3%</td>
+    <td class="c pos">635%</td>
+    <td class="c pos">9.15%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/sdy.html'">
+    <td class="c" style="color:var(--text-muted)">54</td>
+    <td><a href="/etf/sdy.html">SDY</a></td>
+    <td class="peer-name">SPDR S&amp;P Dividend ETF</td>
+    <td class="c">2.6%</td>
+    <td class="c pos">510%</td>
+    <td class="c pos">9.10%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/eggy.html'">
+    <td class="c" style="color:var(--text-muted)">55</td>
+    <td><a href="/etf/eggy.html">EGGY</a></td>
+    <td class="peer-name">NestYield Dynamic Income ETF</td>
+    <td class="c">33%</td>
+    <td class="c pos">47%</td>
+    <td class="c pos">26.52%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/vaie.html'">
+    <td class="c" style="color:var(--text-muted)">56</td>
+    <td><a href="/etf/vaie.html">VAIE</a></td>
+    <td class="peer-name">VegaShares US Equity Autocallable Income ETF</td>
+    <td class="c">15%</td>
+    <td class="c pos">5%</td>
+    <td class="c pos">20.13%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/gooy.html'">
+    <td class="c" style="color:var(--text-muted)">57</td>
+    <td><a href="/etf/gooy.html">GOOY</a></td>
+    <td class="peer-name">YieldMax GOOGL Option Income Strategy ETF</td>
+    <td class="c">30%</td>
+    <td class="c pos">82%</td>
+    <td class="c pos">21.03%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/snoy.html'">
+    <td class="c" style="color:var(--text-muted)">58</td>
+    <td><a href="/etf/snoy.html">SNOY</a></td>
+    <td class="peer-name">YieldMax SNOW Option Income Strategy ETF</td>
+    <td class="c">91%</td>
+    <td class="c pos">128%</td>
+    <td class="c pos">45.88%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/jepi.html'">
+    <td class="c" style="color:var(--text-muted)">59</td>
+    <td><a href="/etf/jepi.html">JEPI</a></td>
+    <td class="peer-name">JPMorgan Equity Premium Income ETF</td>
+    <td class="c">8.0%</td>
+    <td class="c pos">97%</td>
+    <td class="c pos">11.48%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/khpi.html'">
+    <td class="c" style="color:var(--text-muted)">60</td>
+    <td><a href="/etf/khpi.html">KHPI</a></td>
+    <td class="peer-name">Kensington Hedged Premium Income ETF</td>
+    <td class="c">9.0%</td>
+    <td class="c pos">26%</td>
+    <td class="c pos">12.58%</td>
+    <td class="c gold"><strong>A-</strong></td></tr>
+<tr onclick="location.href='/etf/hcow.html'">
+    <td class="c" style="color:var(--text-muted)">61</td>
+    <td><a href="/etf/hcow.html">HCOW</a></td>
+    <td class="peer-name">Amplify COWS Covered Call ETF</td>
+    <td class="c">12.2%</td>
+    <td class="c pos">40%</td>
+    <td class="c pos">12.28%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/aipi.html'">
+    <td class="c" style="color:var(--text-muted)">62</td>
+    <td><a href="/etf/aipi.html">AIPI</a></td>
+    <td class="peer-name">REX AI Equity Premium Income ETF</td>
+    <td class="c">34.8%</td>
+    <td class="c pos">53%</td>
+    <td class="c pos">21.34%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/sioo.html'">
+    <td class="c" style="color:var(--text-muted)">63</td>
+    <td><a href="/etf/sioo.html">SIOO</a></td>
+    <td class="peer-name">VistaShares Target 15™ S&amp;P 100 Distribution ETF</td>
+    <td class="c">15.0%</td>
+    <td class="c pos">10%</td>
+    <td class="c pos">15.06%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/pty.html'">
+    <td class="c" style="color:var(--text-muted)">64</td>
+    <td><a href="/etf/pty.html">PTY</a></td>
+    <td class="peer-name">PIMCO Corporate &amp; Income Opportunity Fund</td>
+    <td class="c">11.96%</td>
+    <td class="c pos">1036%</td>
+    <td class="c pos">10.83%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/nvyy.html'">
+    <td class="c" style="color:var(--text-muted)">65</td>
+    <td><a href="/etf/nvyy.html">NVYY</a></td>
+    <td class="peer-name">GraniteShares YieldBOOST NVDA ETF</td>
+    <td class="c">38%</td>
+    <td class="c pos">36%</td>
+    <td class="c pos">27.57%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/hooy.html'">
+    <td class="c" style="color:var(--text-muted)">66</td>
+    <td><a href="/etf/hooy.html">HOOY</a></td>
+    <td class="peer-name">YieldMax HOOD Option Income Strategy ETF</td>
+    <td class="c">62%</td>
+    <td class="c pos">43%</td>
+    <td class="c pos">32.34%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/ymag.html'">
+    <td class="c" style="color:var(--text-muted)">67</td>
+    <td><a href="/etf/ymag.html">YMAG</a></td>
+    <td class="peer-name">YieldMax Magnificent 7 Fund of Option Income ETFs</td>
+    <td class="c">50%</td>
+    <td class="c pos">66%</td>
+    <td class="c pos">22.02%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/qdte.html'">
+    <td class="c" style="color:var(--text-muted)">68</td>
+    <td><a href="/etf/qdte.html">QDTE</a></td>
+    <td class="peer-name">Roundhill Innovation-100 0DTE Covered Call Strategy ETF</td>
+    <td class="c">36.0%</td>
+    <td class="c pos">61%</td>
+    <td class="c pos">21.53%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/pltw.html'">
+    <td class="c" style="color:var(--text-muted)">69</td>
+    <td><a href="/etf/pltw.html">PLTW</a></td>
+    <td class="peer-name">Roundhill PLTR WeeklyPay ETF</td>
+    <td class="c">71.0%</td>
+    <td class="c pos">46%</td>
+    <td class="c pos">28.98%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/rdte.html'">
+    <td class="c" style="color:var(--text-muted)">70</td>
+    <td><a href="/etf/rdte.html">RDTE</a></td>
+    <td class="peer-name">Roundhill Russell 2000 0DTE Covered Call Strategy ETF</td>
+    <td class="c">39.0%</td>
+    <td class="c pos">47%</td>
+    <td class="c pos">22.08%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/amzy.html'">
+    <td class="c" style="color:var(--text-muted)">71</td>
+    <td><a href="/etf/amzy.html">AMZY</a></td>
+    <td class="peer-name">YieldMax AMZN Option Income Strategy ETF</td>
+    <td class="c">61%</td>
+    <td class="c pos">91%</td>
+    <td class="c pos">22.83%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/xdte.html'">
+    <td class="c" style="color:var(--text-muted)">72</td>
+    <td><a href="/etf/xdte.html">XDTE</a></td>
+    <td class="peer-name">Roundhill S&amp;P 500 0DTE Covered Call Strategy ETF</td>
+    <td class="c">27.0%</td>
+    <td class="c pos">47%</td>
+    <td class="c pos">17.08%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/fepi.html'">
+    <td class="c" style="color:var(--text-muted)">73</td>
+    <td><a href="/etf/fepi.html">FEPI</a></td>
+    <td class="peer-name">REX FANG &amp; Innovation Equity Premium Income ETF</td>
+    <td class="c">25.2%</td>
+    <td class="c pos">64%</td>
+    <td class="c pos">18.93%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/spyt.html'">
+    <td class="c" style="color:var(--text-muted)">74</td>
+    <td><a href="/etf/spyt.html">SPYT</a></td>
+    <td class="peer-name">Defiance S&amp;P 500 Income Target ETF</td>
+    <td class="c">21.0%</td>
+    <td class="c pos">44%</td>
+    <td class="c pos">16.10%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/pdi.html'">
+    <td class="c" style="color:var(--text-muted)">75</td>
+    <td><a href="/etf/pdi.html">PDI</a></td>
+    <td class="peer-name">PIMCO Dynamic Income Fund</td>
+    <td class="c">16.10%</td>
+    <td class="c pos">289%</td>
+    <td class="c pos">10.02%</td>
+    <td class="c gold"><strong>B+</strong></td></tr>
+<tr onclick="location.href='/etf/amyy.html'">
+    <td class="c" style="color:var(--text-muted)">76</td>
+    <td><a href="/etf/amyy.html">AMYY</a></td>
+    <td class="peer-name">GraniteShares YieldBOOST AMD ETF</td>
+    <td class="c">80%</td>
+    <td class="c pos">32%</td>
+    <td class="c pos">35.45%</td>
+    <td class="c gold"><strong>B</strong></td></tr>
+<tr onclick="location.href='/etf/giax.html'">
+    <td class="c" style="color:var(--text-muted)">77</td>
+    <td><a href="/etf/giax.html">GIAX</a></td>
+    <td class="peer-name">Nicholas Global Equity and Income ETF</td>
+    <td class="c">24.0%</td>
+    <td class="c pos">35%</td>
+    <td class="c pos">15.78%</td>
+    <td class="c gold"><strong>B</strong></td></tr>
+<tr onclick="location.href='/etf/kng.html'">
+    <td class="c" style="color:var(--text-muted)">78</td>
+    <td><a href="/etf/kng.html">KNG</a></td>
+    <td class="peer-name">FT Vest S&amp;P 500 Dividend Aristocrats Target Income ETF</td>
+    <td class="c">8%</td>
+    <td class="c pos">111%</td>
+    <td class="c pos">9.31%</td>
+    <td class="c gold"><strong>B</strong></td></tr>
+<tr onclick="location.href='/etf/iwmy.html'">
+    <td class="c" style="color:var(--text-muted)">79</td>
+    <td><a href="/etf/iwmy.html">IWMY</a></td>
+    <td class="peer-name">Defiance R2000 Enhanced Options &amp; 0DTE Income ETF</td>
+    <td class="c">30.0%</td>
+    <td class="c pos">50%</td>
+    <td class="c pos">15.61%</td>
+    <td class="c gold"><strong>B</strong></td></tr>
+<tr onclick="location.href='/etf/qqqy.html'">
+    <td class="c" style="color:var(--text-muted)">80</td>
+    <td><a href="/etf/qqqy.html">QQQY</a></td>
+    <td class="peer-name">Definance Nasdaq 100 Enhanced Options &amp; 0DTE Income ETF</td>
+    <td class="c">30.0%</td>
+    <td class="c pos">57%</td>
+    <td class="c pos">16.69%</td>
+    <td class="c gold"><strong>B</strong></td></tr>
+<tr onclick="location.href='/etf/qsix.html'">
+    <td class="c" style="color:var(--text-muted)">81</td>
+    <td><a href="/etf/qsix.html">QSIX</a></td>
+    <td class="peer-name">Pacer Metaurus Nasdaq 100 Dividend Multiplier 600 ETF</td>
+    <td class="c">4.65%</td>
+    <td class="c pos">46%</td>
+    <td class="c pos">7.71%</td>
+    <td class="c gold"><strong>B</strong></td></tr>
+<tr onclick="location.href='/etf/iyri.html'">
+    <td class="c" style="color:var(--text-muted)">82</td>
+    <td><a href="/etf/iyri.html">IYRI</a></td>
+    <td class="peer-name">NEOS Real Estate High Income ETF</td>
+    <td class="c">10.9%</td>
+    <td class="c pos">18%</td>
+    <td class="c pos">11.00%</td>
+    <td class="c gold"><strong>B</strong></td></tr>
+<tr onclick="location.href='/etf/ovf.html'">
+    <td class="c" style="color:var(--text-muted)">83</td>
+    <td><a href="/etf/ovf.html">OVF</a></td>
+    <td class="peer-name">Overlay Shares Foreign Equity ETF (OVF)</td>
+    <td class="c">10.40%</td>
+    <td class="c pos">88%</td>
+    <td class="c pos">9.61%</td>
+    <td class="c gold"><strong>B</strong></td></tr>
+<tr onclick="location.href='/etf/qyld.html'">
+    <td class="c" style="color:var(--text-muted)">84</td>
+    <td><a href="/etf/qyld.html">QYLD</a></td>
+    <td class="peer-name">Global X Nasdaq 100 Covered Call ETF</td>
+    <td class="c">13.4%</td>
+    <td class="c pos">188%</td>
+    <td class="c pos">8.70%</td>
+    <td class="c gold"><strong>B-</strong></td></tr>
+<tr onclick="location.href='/etf/fthi.html'">
+    <td class="c" style="color:var(--text-muted)">85</td>
+    <td><a href="/etf/fthi.html">FTHI</a></td>
+    <td class="peer-name">First Trust BuyWrite Income ETF</td>
+    <td class="c">9.0%</td>
+    <td class="c pos">161%</td>
+    <td class="c pos">7.91%</td>
+    <td class="c gold"><strong>B-</strong></td></tr>
+<tr onclick="location.href='/etf/magy.html'">
+    <td class="c" style="color:var(--text-muted)">86</td>
+    <td><a href="/etf/magy.html">MAGY</a></td>
+    <td class="peer-name">Roundhill Magnificent Seven Covered Call ETF</td>
+    <td class="c">25.0%</td>
+    <td class="c pos">20%</td>
+    <td class="c pos">14.88%</td>
+    <td class="c gold"><strong>B-</strong></td></tr>
+<tr onclick="location.href='/etf/idv.html'">
+    <td class="c" style="color:var(--text-muted)">87</td>
+    <td><a href="/etf/idv.html">IDV</a></td>
+    <td class="peer-name">iShares International Select Dividend ETF</td>
+    <td class="c">4.8%</td>
+    <td class="c pos">156%</td>
+    <td class="c pos">5.02%</td>
+    <td class="c gold"><strong>B-</strong></td></tr>
+<tr onclick="location.href='/etf/fby.html'">
+    <td class="c" style="color:var(--text-muted)">88</td>
+    <td><a href="/etf/fby.html">FBY</a></td>
+    <td class="peer-name">YieldMax META Option Income Strategy ETF</td>
+    <td class="c">39%</td>
+    <td class="c pos">51%</td>
+    <td class="c pos">14.44%</td>
+    <td class="c gold"><strong>B-</strong></td></tr>
+<tr onclick="location.href='/etf/oark.html'">
+    <td class="c" style="color:var(--text-muted)">89</td>
+    <td><a href="/etf/oark.html">OARK</a></td>
+    <td class="peer-name">YieldMax Innovation Option Income Strategy ETF</td>
+    <td class="c">26%</td>
+    <td class="c pos">50%</td>
+    <td class="c pos">11.48%</td>
+    <td class="c gold"><strong>B-</strong></td></tr>
+<tr onclick="location.href='/etf/ymax.html'">
+    <td class="c" style="color:var(--text-muted)">90</td>
+    <td><a href="/etf/ymax.html">YMAX</a></td>
+    <td class="peer-name">YieldMax Universe Fund of Option Income ETFs</td>
+    <td class="c">41%</td>
+    <td class="c pos">39%</td>
+    <td class="c pos">13.60%</td>
+    <td class="c gold"><strong>B-</strong></td></tr>
+<tr onclick="location.href='/etf/omah.html'">
+    <td class="c" style="color:var(--text-muted)">91</td>
+    <td><a href="/etf/omah.html">OMAH</a></td>
+    <td class="peer-name">VistaShares Target 15 Berkshire Select Income ETF</td>
+    <td class="c">15.0%</td>
+    <td class="c pos">16%</td>
+    <td class="c pos">10.79%</td>
+    <td class="c gold"><strong>B-</strong></td></tr>
+<tr onclick="location.href='/etf/svol.html'">
+    <td class="c" style="color:var(--text-muted)">92</td>
+    <td><a href="/etf/svol.html">SVOL</a></td>
+    <td class="peer-name">Simplify Volatility Premium ETF</td>
+    <td class="c">20.0%</td>
+    <td class="c pos">54%</td>
+    <td class="c pos">8.55%</td>
+    <td class="c gold"><strong>C+</strong></td></tr>
+<tr onclick="location.href='/etf/babo.html'">
+    <td class="c" style="color:var(--text-muted)">93</td>
+    <td><a href="/etf/babo.html">BABO</a></td>
+    <td class="peer-name">YieldMax BABA Option Income Strategy ETF</td>
+    <td class="c">60%</td>
+    <td class="c pos">24%</td>
+    <td class="c pos">11.21%</td>
+    <td class="c gold"><strong>C+</strong></td></tr>
+<tr onclick="location.href='/etf/cshi.html'">
+    <td class="c" style="color:var(--text-muted)">94</td>
+    <td><a href="/etf/cshi.html">CSHI</a></td>
+    <td class="peer-name">NEOS Enhanced Income 1-3 Month T-Bill ETF</td>
+    <td class="c">4.7%</td>
+    <td class="c pos">23%</td>
+    <td class="c pos">5.36%</td>
+    <td class="c gold"><strong>C+</strong></td></tr>
+<tr onclick="location.href='/etf/cepi.html'">
+    <td class="c" style="color:var(--text-muted)">95</td>
+    <td><a href="/etf/cepi.html">CEPI</a></td>
+    <td class="peer-name">REX Crypto Equity Premium Income ETF</td>
+    <td class="c">42.6%</td>
+    <td class="c pos">21%</td>
+    <td class="c pos">11.88%</td>
+    <td class="c gold"><strong>C+</strong></td></tr>
+<tr onclick="location.href='/etf/yspy.html'">
+    <td class="c" style="color:var(--text-muted)">96</td>
+    <td><a href="/etf/yspy.html">YSPY</a></td>
+    <td class="peer-name">GraniteShares YieldBOOST SPY ETF</td>
+    <td class="c">12%</td>
+    <td class="c pos">14%</td>
+    <td class="c pos">9.34%</td>
+    <td class="c gold"><strong>C+</strong></td></tr>
+<tr onclick="location.href='/etf/qusa.html'">
+    <td class="c" style="color:var(--text-muted)">97</td>
+    <td><a href="/etf/qusa.html">QUSA</a></td>
+    <td class="peer-name">VistaShares Target 15™ USA Quality Income ETF</td>
+    <td class="c">15.0%</td>
+    <td class="c pos">12%</td>
+    <td class="c pos">9.26%</td>
+    <td class="c gold"><strong>C+</strong></td></tr>
+<tr onclick="location.href='/etf/week.html'">
+    <td class="c" style="color:var(--text-muted)">98</td>
+    <td><a href="/etf/week.html">WEEK</a></td>
+    <td class="peer-name">Roundhill Weekly T-Bill ETF</td>
+    <td class="c">3.4%</td>
+    <td class="c pos">6%</td>
+    <td class="c pos">4.11%</td>
+    <td class="c gold"><strong>C+</strong></td></tr>
+<tr onclick="location.href='/etf/wmti.html'">
+    <td class="c" style="color:var(--text-muted)">99</td>
+    <td><a href="/etf/wmti.html">WMTI</a></td>
+    <td class="peer-name">REX WMT Growth And Income ETF</td>
+    <td class="c">27%</td>
+    <td class="c pos">9%</td>
+    <td class="c pos">11.67%</td>
+    <td class="c gold"><strong>C+</strong></td></tr>
+<tr onclick="location.href='/etf/ryld.html'">
+    <td class="c" style="color:var(--text-muted)">100</td>
+    <td><a href="/etf/ryld.html">RYLD</a></td>
+    <td class="peer-name">Global X Russell 2000 Covered Call ETF</td>
+    <td class="c">12.2%</td>
+    <td class="c pos">55%</td>
+    <td class="c pos">6.16%</td>
+    <td class="c gold"><strong>C</strong></td></tr>
+<tr onclick="location.href='/etf/yyy.html'">
+    <td class="c" style="color:var(--text-muted)">101</td>
+    <td><a href="/etf/yyy.html">YYY</a></td>
+    <td class="peer-name">Amplify High Income ETF</td>
+    <td class="c">12.2%</td>
+    <td class="c pos">94%</td>
+    <td class="c pos">5.16%</td>
+    <td class="c gold"><strong>C</strong></td></tr>
+<tr onclick="location.href='/etf/xyld.html'">
+    <td class="c" style="color:var(--text-muted)">102</td>
+    <td><a href="/etf/xyld.html">XYLD</a></td>
+    <td class="peer-name">Global X S&amp;P 500 Covered Call ETF</td>
+    <td class="c">11.0%</td>
+    <td class="c pos">102%</td>
+    <td class="c pos">5.49%</td>
+    <td class="c gold"><strong>C</strong></td></tr>
+<tr onclick="location.href='/etf/schp.html'">
+    <td class="c" style="color:var(--text-muted)">103</td>
+    <td><a href="/etf/schp.html">SCHP</a></td>
+    <td class="peer-name">Schwab U.S. TIPS ETF</td>
+    <td class="c">3.2%</td>
+    <td class="c pos">54%</td>
+    <td class="c pos">2.73%</td>
+    <td class="c gold"><strong>C</strong></td></tr>
+<tr onclick="location.href='/etf/tsly.html'">
+    <td class="c" style="color:var(--text-muted)">104</td>
+    <td><a href="/etf/tsly.html">TSLY</a></td>
+    <td class="peer-name">YieldMax TSLA Option Income Strategy ETF</td>
+    <td class="c">43%</td>
+    <td class="c pos">30%</td>
+    <td class="c pos">7.12%</td>
+    <td class="c gold"><strong>C-</strong></td></tr>
+<tr onclick="location.href='/etf/tsyx.html'">
+    <td class="c" style="color:var(--text-muted)">105</td>
+    <td><a href="/etf/tsyx.html">TSYX</a></td>
+    <td class="peer-name">TSPY LIFT ETF</td>
+    <td class="c">20%</td>
+    <td class="c pos">11%</td>
+    <td class="c pos">6.72%</td>
+    <td class="c gold"><strong>C-</strong></td></tr>
+<tr onclick="location.href='/etf/buyw.html'">
+    <td class="c" style="color:var(--text-muted)">106</td>
+    <td><a href="/etf/buyw.html">BUYW</a></td>
+    <td class="peer-name">Main BuyWrite ETF</td>
+    <td class="c">6.0%</td>
+    <td class="c pos">45%</td>
+    <td class="c pos">3.56%</td>
+    <td class="c gold"><strong>C-</strong></td></tr>
+<tr onclick="location.href='/etf/bndi.html'">
+    <td class="c" style="color:var(--text-muted)">107</td>
+    <td><a href="/etf/bndi.html">BNDI</a></td>
+    <td class="peer-name">NEOS Enhanced Income Aggregate Bond ETF</td>
+    <td class="c">5.7%</td>
+    <td class="c pos">16%</td>
+    <td class="c pos">3.82%</td>
+    <td class="c gold"><strong>D</strong></td></tr>
+<tr onclick="location.href='/etf/cony.html'">
+    <td class="c" style="color:var(--text-muted)">108</td>
+    <td><a href="/etf/cony.html">CONY</a></td>
+    <td class="peer-name">YieldMax COIN Option Income Strategy ETF</td>
+    <td class="c">65%</td>
+    <td class="c pos">17%</td>
+    <td class="c pos">5.36%</td>
+    <td class="c gold"><strong>D</strong></td></tr>
+<tr onclick="location.href='/etf/msty.html'">
+    <td class="c" style="color:var(--text-muted)">109</td>
+    <td><a href="/etf/msty.html">MSTY</a></td>
+    <td class="peer-name">YieldMax MSTR Option Income Strategy ETF</td>
+    <td class="c">76%</td>
+    <td class="c pos">14%</td>
+    <td class="c pos">5.42%</td>
+    <td class="c gold"><strong>D</strong></td></tr>
+<tr onclick="location.href='/etf/ybtc.html'">
+    <td class="c" style="color:var(--text-muted)">110</td>
+    <td><a href="/etf/ybtc.html">YBTC</a></td>
+    <td class="peer-name">Roundhill Bitcoin Covered Call Strategy ETF</td>
+    <td class="c">31.0%</td>
+    <td class="c pos">16%</td>
+    <td class="c pos">5.93%</td>
+    <td class="c gold"><strong>D</strong></td></tr>
+<tr onclick="location.href='/etf/qqqh.html'">
+    <td class="c" style="color:var(--text-muted)">111</td>
+    <td><a href="/etf/qqqh.html">QQQH</a></td>
+    <td class="peer-name">NEOS Nasdaq 100 Hedged Equity Income ETF</td>
+    <td class="c">9.2%</td>
+    <td class="c pos">24%</td>
+    <td class="c pos">3.28%</td>
+    <td class="c gold"><strong>D</strong></td></tr>
+<tr onclick="location.href='/etf/gpix.html'">
+    <td class="c" style="color:var(--text-muted)">112</td>
+    <td><a href="/etf/gpix.html">GPIX</a></td>
+    <td class="peer-name">Goldman Sachs S&amp;P 500 Premium Income ETF</td>
+    <td class="c">7.9%</td>
+    <td class="c pos">82%</td>
+    <td class="c pos">0.58%</td>
+    <td class="c gold"><strong>D</strong></td></tr>
+<tr onclick="location.href='/etf/ulty.html'">
+    <td class="c" style="color:var(--text-muted)">113</td>
+    <td><a href="/etf/ulty.html">ULTY</a></td>
+    <td class="peer-name">YieldMax Ultra Option Income Strategy ETF</td>
+    <td class="c">61%</td>
+    <td class="c pos">10%</td>
+    <td class="c pos">3.94%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/pypy.html'">
+    <td class="c" style="color:var(--text-muted)">114</td>
+    <td><a href="/etf/pypy.html">PYPY</a></td>
+    <td class="peer-name">YieldMax PYPL Option Income Strategy ETF</td>
+    <td class="c">91%</td>
+    <td class="c pos">11%</td>
+    <td class="c pos">3.67%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/acky.html'">
+    <td class="c" style="color:var(--text-muted)">115</td>
+    <td><a href="/etf/acky.html">ACKY</a></td>
+    <td class="peer-name">VistaShares Target 15 ACKtivist Distribution ETF</td>
+    <td class="c">15.0%</td>
+    <td class="c pos">4%</td>
+    <td class="c pos">4.29%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/tsii.html'">
+    <td class="c" style="color:var(--text-muted)">116</td>
+    <td><a href="/etf/tsii.html">TSII</a></td>
+    <td class="peer-name">REX TSLA Growth And Income ETF</td>
+    <td class="c">47%</td>
+    <td class="c pos">3%</td>
+    <td class="c pos">2.49%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/blox.html'">
+    <td class="c" style="color:var(--text-muted)">117</td>
+    <td><a href="/etf/blox.html">BLOX</a></td>
+    <td class="peer-name">Nicholas Crypto Income ETF</td>
+    <td class="c">36.0%</td>
+    <td class="c pos">1%</td>
+    <td class="c pos">0.86%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/ybst.html'">
+    <td class="c" style="color:var(--text-muted)">118</td>
+    <td><a href="/etf/ybst.html">YBST</a></td>
+    <td class="peer-name">GraniteShares YieldBOOST Single Stock Universe ETF</td>
+    <td class="c">45%</td>
+    <td class="c neg">-24%</td>
+    <td class="c neg">-33.78%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/ybty.html'">
+    <td class="c" style="color:var(--text-muted)">119</td>
+    <td><a href="/etf/ybty.html">YBTY</a></td>
+    <td class="peer-name">GraniteShares YieldBOOST TopYielders ETF</td>
+    <td class="c">53%</td>
+    <td class="c neg">-29%</td>
+    <td class="c neg">-40.21%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/xbty.html'">
+    <td class="c" style="color:var(--text-muted)">120</td>
+    <td><a href="/etf/xbty.html">XBTY</a></td>
+    <td class="peer-name">GraniteShares YieldBOOST Bitcoin ETF</td>
+    <td class="c">31%</td>
+    <td class="c neg">-38%</td>
+    <td class="c neg">-31.52%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/coyy.html'">
+    <td class="c" style="color:var(--text-muted)">121</td>
+    <td><a href="/etf/coyy.html">COYY</a></td>
+    <td class="peer-name">GraniteShares YieldBOOST COIN ETF</td>
+    <td class="c">70%</td>
+    <td class="c neg">-59%</td>
+    <td class="c neg">-57.16%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/hoyy.html'">
+    <td class="c" style="color:var(--text-muted)">122</td>
+    <td><a href="/etf/hoyy.html">HOYY</a></td>
+    <td class="peer-name">GraniteShares YieldBOOST HOOD ETF</td>
+    <td class="c">76%</td>
+    <td class="c neg">-47%</td>
+    <td class="c neg">-51.53%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/tqqy.html'">
+    <td class="c" style="color:var(--text-muted)">123</td>
+    <td><a href="/etf/tqqy.html">TQQY</a></td>
+    <td class="peer-name">GraniteShares YieldBOOST QQQ ETF</td>
+    <td class="c">30%</td>
+    <td class="c pos">0%</td>
+    <td class="c pos">0.00%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/smyy.html'">
+    <td class="c" style="color:var(--text-muted)">124</td>
+    <td><a href="/etf/smyy.html">SMYY</a></td>
+    <td class="peer-name">GraniteShares YieldBOOST SMCI ETF</td>
+    <td class="c">74%</td>
+    <td class="c neg">-31%</td>
+    <td class="c neg">-34.51%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/tsyy.html'">
+    <td class="c" style="color:var(--text-muted)">125</td>
+    <td><a href="/etf/tsyy.html">TSYY</a></td>
+    <td class="peer-name">GraniteShares YieldBOOST TSLA ETF</td>
+    <td class="c">44%</td>
+    <td class="c neg">-34%</td>
+    <td class="c neg">-22.15%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/smcy.html'">
+    <td class="c" style="color:var(--text-muted)">126</td>
+    <td><a href="/etf/smcy.html">SMCY</a></td>
+    <td class="peer-name">YieldMax SMCI Option Income Strategy ETF</td>
+    <td class="c">75%</td>
+    <td class="c neg">-34%</td>
+    <td class="c neg">-19.39%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/ybit.html'">
+    <td class="c" style="color:var(--text-muted)">127</td>
+    <td><a href="/etf/ybit.html">YBIT</a></td>
+    <td class="peer-name">YieldMax Bitcoin Option Income Strategy ETF</td>
+    <td class="c">39%</td>
+    <td class="c neg">-29%</td>
+    <td class="c neg">-13.74%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/lfgy.html'">
+    <td class="c" style="color:var(--text-muted)">128</td>
+    <td><a href="/etf/lfgy.html">LFGY</a></td>
+    <td class="peer-name">YieldMax Crypto Industry &amp; Tech Portfolio Option Income ETF</td>
+    <td class="c">46%</td>
+    <td class="c neg">-2%</td>
+    <td class="c neg">-1.26%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/btci.html'">
+    <td class="c" style="color:var(--text-muted)">129</td>
+    <td><a href="/etf/btci.html">BTCI</a></td>
+    <td class="peer-name">NEOS Bitcoin High Income ETF</td>
+    <td class="c">26.7%</td>
+    <td class="c neg">-5%</td>
+    <td class="c neg">-2.76%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/xbci.html'">
+    <td class="c" style="color:var(--text-muted)">130</td>
+    <td><a href="/etf/xbci.html">XBCI</a></td>
+    <td class="peer-name">NEOS Boosted Bitcoin High Income ETF</td>
+    <td class="c">41%</td>
+    <td class="c neg">-22%</td>
+    <td class="c neg">-37.33%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/batt.html'">
+    <td class="c" style="color:var(--text-muted)">131</td>
+    <td><a href="/etf/batt.html">BATT</a></td>
+    <td class="peer-name">Amplify Lithium &amp; Battery Technology ETF</td>
+    <td class="c">2.2%</td>
+    <td class="c neg">-8%</td>
+    <td class="c neg">-1.01%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/bity.html'">
+    <td class="c" style="color:var(--text-muted)">132</td>
+    <td><a href="/etf/bity.html">BITY</a></td>
+    <td class="peer-name">Amplify Bitcoin 2% Monthly Option Income ETF</td>
+    <td class="c">24.0%</td>
+    <td class="c neg">-32%</td>
+    <td class="c neg">-25.70%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/bagy.html'">
+    <td class="c" style="color:var(--text-muted)">133</td>
+    <td><a href="/etf/bagy.html">BAGY</a></td>
+    <td class="peer-name">Amplify Bitcoin Max Income Covered Call ETF</td>
+    <td class="c">37.0%</td>
+    <td class="c neg">-32%</td>
+    <td class="c neg">-25.70%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/yeth.html'">
+    <td class="c" style="color:var(--text-muted)">134</td>
+    <td><a href="/etf/yeth.html">YETH</a></td>
+    <td class="peer-name">Roundhill Ether Covered Call Strategy ETF</td>
+    <td class="c">51.0%</td>
+    <td class="c neg">-39%</td>
+    <td class="c neg">-22.39%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/coiw.html'">
+    <td class="c" style="color:var(--text-muted)">135</td>
+    <td><a href="/etf/coiw.html">COIW</a></td>
+    <td class="peer-name">Roundhill COIN WeeklyPay ETF</td>
+    <td class="c">83.0%</td>
+    <td class="c neg">-56%</td>
+    <td class="c neg">-42.42%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/tslw.html'">
+    <td class="c" style="color:var(--text-muted)">136</td>
+    <td><a href="/etf/tslw.html">TSLW</a></td>
+    <td class="peer-name">Roundhill TSLA WeeklyPay ETF</td>
+    <td class="c">57.0%</td>
+    <td class="c neg">-16%</td>
+    <td class="c neg">-11.06%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/bito.html'">
+    <td class="c" style="color:var(--text-muted)">137</td>
+    <td><a href="/etf/bito.html">BITO</a></td>
+    <td class="peer-name">ProShares Bitcoin ETF</td>
+    <td class="c">80.0%</td>
+    <td class="c neg">-24%</td>
+    <td class="c neg">-5.53%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/ulti.html'">
+    <td class="c" style="color:var(--text-muted)">138</td>
+    <td><a href="/etf/ulti.html">ULTI</a></td>
+    <td class="peer-name">REX IncomeMax Option Strategy ET</td>
+    <td class="c">72%</td>
+    <td class="c neg">-47%</td>
+    <td class="c neg">-55.15%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/isbg.html'">
+    <td class="c" style="color:var(--text-muted)">139</td>
+    <td><a href="/etf/isbg.html">ISBG</a></td>
+    <td class="peer-name">IncomeSTKd 1X Bitcoin &amp; 1X Gold Premium ETF</td>
+    <td class="c">17%</td>
+    <td class="c neg">-48%</td>
+    <td class="c neg">-68.25%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/issb.html'">
+    <td class="c" style="color:var(--text-muted)">140</td>
+    <td><a href="/etf/issb.html">ISSB</a></td>
+    <td class="peer-name">IncomeSTKd 1X US Stocks &amp; 1X Bitcoin Premium ETF</td>
+    <td class="c">17%</td>
+    <td class="c neg">-25%</td>
+    <td class="c neg">-39.63%</td>
+    <td class="c gold"><strong>F</strong></td></tr>
+<tr onclick="location.href='/etf/tmgn.html'">
+    <td class="c" style="color:var(--text-muted)">141</td>
+    <td><a href="/etf/tmgn.html">TMGN</a></td>
+    <td class="peer-name">TappAlpha Cboe Magnificent 10 Growth &amp; Daily Income ETF</td>
+    <td class="c">0</td>
+    <td class="c neg">-%</td>
+    <td class="c neg">N/A</td>
+    <td class="c gold"><strong>F</strong></td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="section">
+    <h2 class="sec-title">🌐 More Dividend Research</h2>
+    <p class="sec-sub">Built by dividend investors. For dividend investors.</p>
+    <div class="site-cards-grid">
+      <a href="https://topdividendetfs.com" target="_blank" rel="noopener" class="network-card">
+        <div class="card-icon">📊</div><div class="card-name">TopDividendETFs.com</div>
+        <div class="card-desc">Rankings of the top dividend ETFs by yield, growth, and reliability.</div>
+      </a>
+      <a href="https://weeklyetfs.com" target="_blank" rel="noopener" class="network-card">
+        <div class="card-icon">📅</div><div class="card-name">WeeklyETFs.com</div>
+        <div class="card-desc">Every ETF that pays a dividend each and every week.</div>
+      </a>
+      <a href="https://monthlyetfs.com" target="_blank" rel="noopener" class="network-card">
+        <div class="card-icon">📆</div><div class="card-name">MonthlyETFs.com</div>
+        <div class="card-desc">Match your dividend income to your monthly bills.</div>
+      </a>
+      <a href="https://topdividendtools.com" target="_blank" rel="noopener" class="network-card">
+        <div class="card-icon">🛠️</div><div class="card-name">TopDividendTools.com</div>
+        <div class="card-desc">Free calculators, screeners, and planning tools.</div>
+      </a>
+      <a href="https://topdividendetfspro.com" target="_blank" rel="noopener" class="network-card pro-card">
+        <div class="card-icon">⭐</div><div class="card-name">TopDividendETFsPro.com</div>
+        <div class="card-desc">Deep data, advanced filters, tax grades, daily pro insights.</div>
+      </a>
+    </div>
+  </section>
+  </div>
+</main>
+<footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/etf/">All ETFs</a>
+          <a href="/vs/">ETF Comparisons</a>
+          <a href="/terms.html">Terms of Use</a>
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/faq.html">FAQ</a>
+          <a href="/disclaimer.html">Disclaimer</a>
+        </div>
+        <div class="footer-disclaimer">
+          This site is 100% free and for entertainment purposes only. All data is curated from public sources and may be inaccurate or delayed. Not financial advice. Past performance does not guarantee future results.
+        </div>
+        <p class="footer-copyright">© 2026 ETF Total Returns. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
