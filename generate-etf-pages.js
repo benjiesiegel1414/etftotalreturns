@@ -30,16 +30,13 @@ const VS_TICKERS = [
 ];
 
 /* ═══════════════════════════════════════════════════════════════
-   SPONSOR BANNER
-   Swap these three values when the sponsorship changes.
-   Set enabled:false to strip ads from every generated page at once.
+   PROMO SLOT
+   House promo for TopDividendETFsPRO.com. No paid display ads.
+   Set enabled:false to strip the slot from every generated page at once.
    ═══════════════════════════════════════════════════════════════ */
-const SPONSOR = {
+const PROMO = {
   enabled: true,
-  href: 'https://vegasharesetfs.com/VAIE',
-  img: 'https://raw.githubusercontent.com/benjiesiegel1414/etftotalreturns/main/vaie-ad-728x90px.png',
-  alt: 'VAIE - Sponsored Advertisement',
-  label: 'Sponsored by VegaShares'
+  href: 'https://TopDividendETFsPRO.com'
 };
 
 /* ───────────────────────────── helpers ───────────────────────── */
@@ -197,10 +194,23 @@ const STYLES = `
     .matchups-btn:hover{transform:translateY(-2px);background:rgba(16,185,129,.1)}
     .premium-btn{padding:10px 20px;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:var(--dark-bg);font-weight:800;font-size:14px;text-decoration:none;border-radius:8px;box-shadow:0 0 20px rgba(245,158,11,.4);white-space:nowrap;transition:all .3s}
     .premium-btn:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(245,158,11,.6)}
-    .banner{width:90%;max-width:1000px;margin:24px auto 32px;display:flex;flex-direction:column;align-items:center;gap:8px}
-    .banner img{display:block;max-width:100%;height:auto;transition:transform .3s}
-    .banner:hover img{transform:scale(1.02)}
-    .banner small{color:var(--text-muted);font-size:.78em;font-weight:600}
+    .pro-bar{width:90%;max-width:1000px;margin:24px auto 32px;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(16,185,129,.05));border:1.5px solid rgba(245,158,11,.3);border-radius:14px;text-decoration:none;color:var(--text-primary);transition:all .3s}
+    .pro-bar:hover{border-color:var(--accent-gold);box-shadow:0 8px 32px rgba(245,158,11,.18);transform:translateY(-2px)}
+    .pro-bar-left{display:flex;align-items:center;gap:16px;min-width:0}
+    .pro-badge{flex-shrink:0;background:var(--accent-gold);color:var(--dark-bg);font-size:11px;font-weight:900;letter-spacing:1.5px;padding:5px 12px;border-radius:20px}
+    .pro-bar-copy strong{display:block;font-size:16px;font-weight:800;color:var(--accent-gold);line-height:1.3;margin-bottom:3px}
+    .pro-bar-copy span{display:block;font-size:13.5px;color:var(--text-secondary);line-height:1.45}
+    .pro-bar-cta{flex-shrink:0;padding:11px 22px;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:var(--dark-bg);font-weight:800;font-size:14px;border-radius:10px;white-space:nowrap;box-shadow:0 0 20px rgba(245,158,11,.35);transition:all .3s}
+    .pro-bar:hover .pro-bar-cta{box-shadow:0 0 32px rgba(245,158,11,.55)}
+    .pro-card-promo{width:90%;max-width:1000px;margin:24px auto 32px;padding:34px 28px;display:block;text-align:center;background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(16,185,129,.05));border:1.5px solid rgba(245,158,11,.3);border-radius:14px;text-decoration:none;color:var(--text-primary);transition:all .3s}
+    .pro-card-promo:hover{border-color:var(--accent-gold);box-shadow:0 8px 32px rgba(245,158,11,.18);transform:translateY(-3px)}
+    .pro-card-promo h3{font-size:24px;font-weight:800;margin:14px 0 10px;line-height:1.25;color:#FBBF24}
+    .pro-card-promo p{font-size:14px;color:var(--text-secondary);max-width:620px;margin:0 auto 20px;line-height:1.6}
+    .pro-chips{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:24px}
+    .pro-chips span{padding:8px 15px;background:var(--surface-dark);border:1px solid rgba(245,158,11,.25);border-radius:999px;color:#FBBF24;font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700}
+    .pro-card-cta{display:inline-block;padding:13px 30px;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:var(--dark-bg);font-weight:800;font-size:15px;border-radius:10px;box-shadow:0 0 24px rgba(245,158,11,.4);transition:all .3s}
+    .pro-card-promo:hover .pro-card-cta{box-shadow:0 0 38px rgba(245,158,11,.6)}
+    @media (max-width:760px){.pro-bar,.pro-card-promo{width:100%;max-width:none;margin:16px auto 24px}.pro-bar{flex-direction:column;align-items:stretch;text-align:center;gap:14px;padding:18px}.pro-bar-left{flex-direction:column;gap:10px}.pro-bar-cta{text-align:center}.pro-card-promo{padding:26px 18px}.pro-card-promo h3{font-size:19px}.pro-chips span{font-size:11.5px;padding:7px 12px}}
     .crumbs{padding:20px 0 0;font-size:13px;color:var(--text-muted)}
     .crumbs a{color:var(--green-light);text-decoration:none}
     .crumbs a:hover{text-decoration:underline}
@@ -311,14 +321,32 @@ function headerHtml() {
   </header>`;
 }
 
-function bannerHtml() {
-  if (!SPONSOR.enabled) return '';
-  return `<div class="banner">
-    <a href="${SPONSOR.href}" target="_blank" rel="noopener sponsored">
-      <img src="${SPONSOR.img}" alt="${esc(SPONSOR.alt)}" loading="lazy">
-    </a>
-    <small>${esc(SPONSOR.label)}</small>
-  </div>`;
+function proBarHtml() {
+  if (!PROMO.enabled) return '';
+  return `<a href="${PROMO.href}" target="_blank" rel="noopener" class="pro-bar">
+  <div class="pro-bar-left">
+    <span class="pro-badge">PRO</span>
+    <div class="pro-bar-copy">
+      <strong>See the numbers this page doesn't show</strong>
+      <span>Tax treatment, AUM, price decay, and advanced filtering &mdash; updated daily.</span>
+    </div>
+  </div>
+  <span class="pro-bar-cta">Go PRO &rarr;</span>
+</a>`;
+}
+
+function proCardHtml() {
+  if (!PROMO.enabled) return '';
+  return `<a href="${PROMO.href}" target="_blank" rel="noopener" class="pro-card-promo">
+  <span class="pro-badge">PRO</span>
+  <h3>The full ETF terminal, updated every day</h3>
+  <p>This page gives you yields and total returns. TopDividendETFsPRO.com gives you everything else &mdash; the data set behind the whole network, in one filterable, sortable terminal.</p>
+  <div class="pro-chips">
+    <span>Dividend Yield</span><span>Total Return</span><span>Tax Treatment</span><span>AUM</span>
+    <span>Inception Date</span><span>Price Decay</span><span>Advanced Filtering</span><span>Daily Updates</span>
+  </div>
+  <span class="pro-card-cta">Explore PRO &rarr;</span>
+</a>`;
 }
 
 function networkHtml() {
@@ -507,7 +535,6 @@ function buildEtfPage(e, all) {
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9929351005136304" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VYCX30S0EC"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VYCX30S0EC');</script>
 <script type="application/ld+json">${JSON.stringify(breadcrumbSchema)}</script>
@@ -540,7 +567,7 @@ ${headerHtml()}
       <div class="metric"><div class="lbl">Scorecard Rank</div><div class="val gold">#${e.rank}</div><div class="sub">of ${all.length} funds</div></div>
     </div>
 
-    ${bannerHtml()}
+    ${proBarHtml()}
 
     <section class="section">
       <h2 class="sec-title">🎯 How ${esc(e.symbol)} Scored</h2>
@@ -599,7 +626,7 @@ ${headerHtml()}
       </div>
     </section>
 
-    ${bannerHtml()}
+    ${proCardHtml()}
 
     <section class="section">
       <h2 class="sec-title">🔤 Every ETF We Track</h2>
@@ -677,7 +704,6 @@ function buildIndexPage(all) {
 <meta property="og:image" content="https://raw.githubusercontent.com/benjiesiegel1414/etftotalreturns/main/etf.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9929351005136304" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VYCX30S0EC"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VYCX30S0EC');</script>
 <style>${STYLES}</style>
@@ -690,7 +716,7 @@ ${headerHtml()}
     <section class="section" style="margin-top:24px">
       <h1 class="ticker-line" style="font-size:clamp(30px,5vw,46px)">All ETF Scorecards</h1>
       <p class="sec-sub" style="margin-top:12px">Every fund we track, graded on total return rather than headline yield. Click any row for the full scorecard, income calculator, and head-to-head comparisons.</p>
-      ${bannerHtml()}
+      ${proBarHtml()}
       <div class="panel" style="padding:8px 20px">
         <table class="peer-table">
           <thead><tr><th class="c">#</th><th>Symbol</th><th>Name</th><th class="c">Yield</th><th class="c">Total Return</th><th class="c">Annualized</th><th class="c">Grade</th></tr></thead>
