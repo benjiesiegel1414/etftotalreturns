@@ -63,6 +63,7 @@
             --success: #10B981;
             --danger: #EF4444;
             --accent-gold: #F59E0B;
+            --gold-light: #FBBF24;
         }
 
         html, body {
@@ -1620,6 +1621,116 @@
                 font-size: 11px;
             }
         }
+
+        /* ═══════════════ STICKY BOTTOM PRO BAR ═══════════════ */
+        .pro-sticky {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            padding: 13px 56px 13px 20px;
+            background: rgba(10, 31, 30, 0.97);
+            backdrop-filter: blur(18px);
+            border-top: 1.5px solid rgba(245, 158, 11, 0.45);
+            box-shadow: 0 -10px 34px rgba(0, 0, 0, 0.5);
+            transform: translateY(110%);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .pro-sticky.is-visible {
+            transform: translateY(0);
+        }
+
+        .ps-copy {
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+            color: var(--white);
+            line-height: 1.3;
+            min-width: 0;
+        }
+
+        .ps-copy span {
+            color: var(--gold-light);
+        }
+
+        .ps-cta {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 26px;
+            background: linear-gradient(135deg, #F59E0B, #FBBF24);
+            color: var(--dark-bg);
+            font-weight: 800;
+            font-size: 14.5px;
+            text-decoration: none;
+            border-radius: 9px;
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .ps-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(245, 158, 11, 0.6);
+        }
+
+        .ps-close {
+            position: absolute;
+            top: 50%;
+            right: 14px;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 17px;
+            line-height: 1;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .ps-close:hover {
+            color: var(--white);
+            border-color: var(--green-primary);
+            background: rgba(16, 185, 129, 0.12);
+        }
+
+        body.pro-sticky-on {
+            padding-bottom: 76px;
+        }
+
+        @media (max-width: 620px) {
+            .pro-sticky {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+                gap: 10px;
+                padding: 14px 16px 16px;
+            }
+            .ps-copy {
+                font-size: 13.5px;
+                padding-right: 30px;
+            }
+            .ps-cta {
+                justify-content: center;
+            }
+            .ps-close {
+                top: 12px;
+                transform: none;
+            }
+            body.pro-sticky-on {
+                padding-bottom: 128px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1853,6 +1964,13 @@
             </div>
         </div>
     </footer>
+
+    <!-- ═══════════════ STICKY BOTTOM PRO BAR ═══════════════ -->
+    <div class="pro-sticky" id="proSticky" role="complementary" aria-label="PRO terminal offer">
+        <p class="ps-copy">🔓 Unlock <span>ALL</span> The ETF Data You NeED</p>
+        <a href="https://TopDividendETFsPRO.com" target="_blank" class="ps-cta">Go PRO →</a>
+        <button class="ps-close" id="proStickyClose" aria-label="Dismiss PRO offer">✕</button>
+    </div>
 
     <script>
         const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv';
@@ -2090,6 +2208,36 @@
             
             applyFilters();
         });
+
+        // ═══════════════ STICKY BOTTOM PRO BAR ═══════════════
+        (function initProSticky() {
+            const bar = document.getElementById('proSticky');
+            const closeBtn = document.getElementById('proStickyClose');
+            if (!bar || !closeBtn) return;
+
+            let dismissed = false;
+            try { dismissed = sessionStorage.getItem('etr_pro_bar_dismissed') === '1'; } catch (e) {}
+            if (dismissed) return;
+
+            let shown = false;
+            function maybeShow() {
+                if (shown) return;
+                if (window.scrollY > 500) {
+                    shown = true;
+                    bar.classList.add('is-visible');
+                    document.body.classList.add('pro-sticky-on');
+                    window.removeEventListener('scroll', maybeShow);
+                }
+            }
+            window.addEventListener('scroll', maybeShow, { passive: true });
+            maybeShow();
+
+            closeBtn.addEventListener('click', function () {
+                bar.classList.remove('is-visible');
+                document.body.classList.remove('pro-sticky-on');
+                try { sessionStorage.setItem('etr_pro_bar_dismissed', '1'); } catch (e) {}
+            });
+        })();
 
         loadData();
     </script>
