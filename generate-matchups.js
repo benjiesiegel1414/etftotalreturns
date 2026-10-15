@@ -406,7 +406,7 @@ function matchupPage(a, b, relatedSlugs) {
   const year = new Date().getFullYear();
   const updated = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
-  const title = `${a.symbol} vs ${b.symbol}: Which ETF Has Better Total Returns? (${year})`;
+  const title = `${a.symbol} vs ${b.symbol}: Performance & Total Return Comparison (${year})`;
   const description = `${a.symbol} vs ${b.symbol} compared side by side: ${winner.symbol} averages ${pct(wR)} per year since inception vs ${loser.symbol}'s ${pct(lR)}. Yield, age, and total return comparison.`;
 
   const verdictParas = buildVerdict(winner, loser, wR, lR);
