@@ -161,6 +161,33 @@ footer { background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(16,185,129
   .compare-versus { grid-template-columns:1fr; }
   .footer-content { flex-direction:column; text-align:center; }
 }
+
+/* ===== PRO DISPLAY AD (high-visibility) ===== */
+.pro-ad{position:relative;overflow:hidden;width:90%;max-width:1000px;margin:26px auto 34px;display:grid;grid-template-columns:1.25fr 1fr auto;gap:22px;align-items:center;padding:22px 24px;border-radius:18px;text-decoration:none;color:#0A1F1E;background:linear-gradient(120deg,#FDE68A 0%,#FBBF24 38%,#F59E0B 100%);border:2px solid #FCD34D;box-shadow:0 10px 40px rgba(245,158,11,.35),0 0 0 1px rgba(0,0,0,.15) inset;transition:transform .25s ease,box-shadow .25s ease;font-family:inherit}
+.pro-ad:hover{transform:translateY(-3px);box-shadow:0 16px 52px rgba(245,158,11,.55)}
+.pro-ad::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:paShine 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes paShine{0%,55%{left:-60%}100%{left:130%}}
+.pa-kicker{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:#7C2D12;margin-bottom:8px}
+.pa-badge{background:#0A1F1E;color:#FBBF24;font-size:12px;font-weight:900;letter-spacing:2px;padding:5px 11px;border-radius:7px}
+.pa-head{font-size:24px;line-height:1.2;font-weight:900;margin:0 0 10px;color:#0A1F1E}
+.pa-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:5px 16px;font-size:14px;font-weight:700;color:#1F2937}
+.pa-list li::before{content:"✓";display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;margin-right:7px;border-radius:50%;background:#0A1F1E;color:#FBBF24;font-size:11px;font-weight:900}
+.pa-preview{background:#0A1F1E;border-radius:12px;padding:12px 12px 10px;box-shadow:0 6px 18px rgba(0,0,0,.3);font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11.5px;color:#E5E7EB}
+.pa-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;align-items:center;padding:6px 4px;border-bottom:1px solid rgba(16,185,129,.18)}
+.pa-row:last-of-type{border-bottom:0}
+.pa-row.pa-th{color:#FBBF24;font-weight:800;font-size:10px;letter-spacing:.8px;text-transform:uppercase}
+.pa-row b{color:#34D399;font-weight:800}
+.pa-lock{height:11px;border-radius:4px;background:linear-gradient(90deg,rgba(251,191,36,.55),rgba(251,191,36,.18));filter:blur(1.5px)}
+.pa-note{margin-top:8px;text-align:center;font-family:inherit;font-size:11px;font-weight:700;color:#FBBF24}
+.pa-cta-col{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.pa-cta{display:inline-block;background:#0A1F1E;color:#FBBF24;font-size:17px;font-weight:900;padding:15px 24px;border-radius:12px;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.3);animation:paPulse 2.4s ease-in-out infinite}
+.pro-ad:hover .pa-cta{background:#000;color:#FDE68A}
+@keyframes paPulse{0%,100%{box-shadow:0 6px 18px rgba(0,0,0,.3),0 0 0 0 rgba(10,31,30,.45)}50%{box-shadow:0 6px 18px rgba(0,0,0,.3),0 0 0 9px rgba(10,31,30,0)}}
+.pa-price{font-size:12.5px;font-weight:800;color:#0A1F1E}
+.pa-sub{font-size:11.5px;font-weight:700;color:#7C2D12}
+@media (max-width:900px){.pro-ad{grid-template-columns:1fr auto}.pa-preview{display:none}}
+@media (max-width:640px){.pro-ad{width:100%;grid-template-columns:1fr;gap:16px;padding:20px 18px;margin:16px auto 24px;text-align:left}.pa-head{font-size:21px}.pa-list{font-size:13px}.pa-cta-col{align-items:stretch}.pa-cta{text-align:center}}
+@media (prefers-reduced-motion:reduce){.pro-ad::after,.pa-cta{animation:none}}
 </style>
 </head>
 <body>
@@ -176,19 +203,31 @@ footer { background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(16,185,129
       Compare <strong>SPYI</strong> (NEOS S&amp;P 500 High Income ETF) and <strong>VOO</strong> (Vanguard S&amp;P 500 ETF) side by side by
       <strong>average annual total return since inception</strong> — one fair number covering price and dividends.
     </p>
-    <p class="updated-tag">Updated Oct 15, 2026</p>
+    <p class="updated-tag">Updated Oct 16, 2026</p>
     <p class="hero-subtitle"><em>*For entertainment purposes ONLY! NOT financial advice! Data may be inaccurate.*</em></p>
   </div></section>
 
-  <div class="container"><a href="https://TopDividendETFsPRO.com" target="_blank" rel="noopener" class="pro-bar">
-  <div class="pro-bar-left">
-    <span class="pro-badge">PRO</span>
-    <div class="pro-bar-copy">
-      <strong>See the numbers this page doesn't show</strong>
-      <span>Tax treatment, AUM, price decay, and advanced filtering &mdash; updated daily.</span>
-    </div>
+  <div class="container"><a href="https://topdividendetfspro.com/?utm_source=etftotalreturns&amp;utm_medium=display&amp;utm_campaign=pro_ad&amp;utm_content=matchup_page" target="_blank" rel="noopener" class="pro-ad" onclick="window.gtag&amp;&amp;gtag('event','pro_ad_click',{placement:'matchup_page'})">
+  <div class="pa-left">
+    <div class="pa-kicker"><span class="pa-badge">PRO</span>Top Dividend ETFs PRO</div>
+    <div class="pa-head">Total return is only half the story.</div>
+    <ul class="pa-list">
+      <li>Tax grades</li><li>Expense ratios</li>
+      <li>Price decay</li><li>Payout frequency</li>
+    </ul>
   </div>
-  <span class="pro-bar-cta">Go PRO &rarr;</span>
+  <div class="pa-preview" aria-hidden="true">
+    <div class="pa-row pa-th"><span>ETF</span><span>Tax</span><span>Expense</span><span>Decay</span></div>
+    <div class="pa-row"><b>SCHD</b><i class="pa-lock"></i><i class="pa-lock"></i><i class="pa-lock"></i></div>
+    <div class="pa-row"><b>JEPI</b><i class="pa-lock"></i><i class="pa-lock"></i><i class="pa-lock"></i></div>
+    <div class="pa-row"><b>QQQI</b><i class="pa-lock"></i><i class="pa-lock"></i><i class="pa-lock"></i></div>
+    <div class="pa-note">&#128274; 100+ dividend ETFs, updated daily</div>
+  </div>
+  <div class="pa-cta-col">
+    <span class="pa-cta">Unlock PRO &rarr;</span>
+    <span class="pa-price">From $12.95/mo</span>
+    <span class="pa-sub">Cancel anytime</span>
+  </div>
 </a></div>
 
   <section class="section"><div class="container">
@@ -227,7 +266,7 @@ footer { background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(16,185,129
       </div>
       <div class="chart-watermark">
         <div class="wm-brand">📈 ETF Total Returns</div>
-        <div class="wm-note">Oct 15, 2026</div>
+        <div class="wm-note">Oct 16, 2026</div>
       </div>
     </div>
     <div class="cta-row">
