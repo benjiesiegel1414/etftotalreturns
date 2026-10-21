@@ -1,0 +1,53 @@
+name: Build sitemap
+
+# Rebuilds sitemap-pages.xml (root pages, /blog.html and every blog post) and the
+# sitemap.xml index whenever pages change, plus once a day as a safety net.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - 'generate-sitemap.js'
+      - '.github/workflows/sitemap.yml'
+  schedule:
+    - cron: '40 7 * * *'   # daily, after the ETF and matchup builds
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sitemap
+  cancel-in-progress: false
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0   # full history so lastmod can use each file's last commit
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+
+      - name: Build sitemaps
+        run: node generate-sitemap.js
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml sitemap-pages.xml
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git commit -m "Build sitemap"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            sleep 5
+          done
