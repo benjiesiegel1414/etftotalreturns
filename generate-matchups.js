@@ -352,6 +352,21 @@ const HEADER_HTML = `<header><div class="container"><div class="header-content">
   <a href="https://TopDividendETFsPRO.com" target="_blank" class="premium-btn">🌟 Premium</a>
 </div></div></header>`;
 
+/* ═══════════════════════════════════════════════════════════════
+   SPONSOR BANNER
+   Tuttle Capital Income Blast ETFs sponsors ETFTotalReturns.com
+   (3 months from Oct 23, 2026). One banner at the top and one at the
+   bottom of every page, with a "Sponsored By" line linking out.
+   ═══════════════════════════════════════════════════════════════ */
+const SPONSOR_URL = 'https://www.incomeblastetfs.com/';
+function sponsorBannerHtml(pos) {
+  return `<!-- SPONSOR: Tuttle Capital Income Blast ETFs (${pos.toUpperCase()}) -->
+<div class="sponsor-banner" style="width:90%;max-width:1000px;margin:20px auto;display:flex;flex-direction:column;align-items:center;gap:6px;">
+  <a href="${SPONSOR_URL}" target="_blank" rel="noopener sponsored" style="display:block;max-width:100%;"><img src="/Income_Blast_Banner_1456x180-rev.png" alt="Tuttle Capital Income Blast ETFs. Visit IncomeBlastETFs.com" width="1456" height="180" loading="${pos === 'top' ? 'eager' : 'lazy'}" style="display:block;width:auto;height:auto;max-width:100%;"></a>
+  <small style="color:#9CA3AF;font-size:12px;font-weight:600;">Sponsored By <a href="${SPONSOR_URL}" target="_blank" rel="noopener sponsored" style="color:#9CA3AF;text-decoration:underline;">IncomeBlastETFs.com</a></small>
+</div>`;
+}
+
 const PRO_BAR_HTML = `<a href="https://topdividendetfspro.com/?utm_source=etftotalreturns&amp;utm_medium=display&amp;utm_campaign=pro_ad&amp;utm_content=matchup_page" target="_blank" rel="noopener" class="pro-ad" onclick="window.gtag&amp;&amp;gtag('event','pro_ad_click',{placement:'matchup_page'})">
   <div class="pa-left">
     <div class="pa-kicker"><span class="pa-badge">PRO</span>Top Dividend ETFs PRO</div>
@@ -501,7 +516,7 @@ ${HEADER_HTML}
     <p class="hero-subtitle"><em>*For entertainment purposes ONLY! NOT financial advice! Data may be inaccurate.*</em></p>
   </div></section>
 
-  <div class="container">${PRO_BAR_HTML}</div>
+  <div class="container">${sponsorBannerHtml('top')}</div>
 
   <section class="section"><div class="container">
     <div class="chart-card">
@@ -529,8 +544,6 @@ ${HEADER_HTML}
     ${verdictParas.map(p => `<p>${p}</p>`).join('\n    ')}
   </div></div></section>
 
-  <div class="container">${PRO_CARD_HTML}</div>
-
   <section class="section"><div class="container">
     <h2>${esc(a.symbol)} vs ${esc(b.symbol)} Side-by-Side Data</h2>
     <div class="table-container">
@@ -556,6 +569,7 @@ ${HEADER_HTML}
   </div></section>
 
   ${relatedHtml}
+  <div class="container">${sponsorBannerHtml('bottom')}</div>
 </main>
 ${FOOTER_HTML}
 <script type="application/ld+json">${JSON.stringify(faqSchema)}</script>
@@ -595,7 +609,7 @@ ${HEADER_HTML}
     <p class="updated-tag">Updated ${updated}</p>
   </div></section>
 
-  <div class="container">${PRO_BAR_HTML}</div>
+  <div class="container">${sponsorBannerHtml('top')}</div>
 
   ${groups.map(g => `<section class="section"><div class="container">
     <h2>${esc(g)} Comparisons</h2>
@@ -603,6 +617,7 @@ ${HEADER_HTML}
       ${byFirst[g].map(p => `<a class="related-link" href="/vs/${p.slug}.html">${esc(p.a.symbol)} vs ${esc(p.b.symbol)}</a>`).join('\n      ')}
     </div>
   </div></section>`).join('\n')}
+  <div class="container">${sponsorBannerHtml('bottom')}</div>
 </main>
 ${FOOTER_HTML}
 </body>

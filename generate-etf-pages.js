@@ -31,13 +31,28 @@ const VS_TICKERS = [
 
 /* ═══════════════════════════════════════════════════════════════
    PROMO SLOT
-   House promo for TopDividendETFsPRO.com. No paid display ads.
-   Set enabled:false to strip the slot from every generated page at once.
+   House promo for TopDividendETFsPRO.com. Turned OFF while the site has
+   a paid sponsor (see SPONSOR BANNER below).
    ═══════════════════════════════════════════════════════════════ */
 const PROMO = {
-  enabled: true,
+  enabled: false,
   href: 'https://TopDividendETFsPRO.com'
 };
+
+/* ═══════════════════════════════════════════════════════════════
+   SPONSOR BANNER
+   Tuttle Capital Income Blast ETFs sponsors ETFTotalReturns.com
+   (3 months from Oct 23, 2026). One banner at the top and one at the
+   bottom of every page, with a "Sponsored By" line linking out.
+   ═══════════════════════════════════════════════════════════════ */
+const SPONSOR_URL = 'https://www.incomeblastetfs.com/';
+function sponsorBannerHtml(pos) {
+  return `<!-- SPONSOR: Tuttle Capital Income Blast ETFs (${pos.toUpperCase()}) -->
+<div class="sponsor-banner" style="width:90%;max-width:1000px;margin:20px auto;display:flex;flex-direction:column;align-items:center;gap:6px;">
+  <a href="${SPONSOR_URL}" target="_blank" rel="noopener sponsored" style="display:block;max-width:100%;"><img src="/Income_Blast_Banner_1456x180-rev.png" alt="Tuttle Capital Income Blast ETFs. Visit IncomeBlastETFs.com" width="1456" height="180" loading="${pos === 'top' ? 'eager' : 'lazy'}" style="display:block;width:auto;height:auto;max-width:100%;"></a>
+  <small style="color:#9CA3AF;font-size:12px;font-weight:600;">Sponsored By <a href="${SPONSOR_URL}" target="_blank" rel="noopener sponsored" style="color:#9CA3AF;text-decoration:underline;">IncomeBlastETFs.com</a></small>
+</div>`;
+}
 
 /* ───────────────────────────── helpers ───────────────────────── */
 
@@ -606,7 +621,7 @@ ${headerHtml()}
       <div class="metric"><div class="lbl">Scorecard Rank</div><div class="val gold">#${e.rank}</div><div class="sub">of ${all.length} funds</div></div>
     </div>
 
-    ${proBarHtml()}
+    ${sponsorBannerHtml('top')}
 
     <section class="section">
       <h2 class="sec-title">🎯 How ${esc(e.symbol)} Scored</h2>
@@ -675,6 +690,7 @@ ${headerHtml()}
 
     ${networkHtml()}
   </div>
+  ${sponsorBannerHtml('bottom')}
 </main>
 ${footerHtml()}
 <script>
@@ -755,7 +771,7 @@ ${headerHtml()}
     <section class="section" style="margin-top:24px">
       <h1 class="ticker-line" style="font-size:clamp(30px,5vw,46px)">All ETF Scorecards</h1>
       <p class="sec-sub" style="margin-top:12px">Every fund we track, graded on total return rather than headline yield. Click any row for the full scorecard, income calculator, and head-to-head comparisons.</p>
-      ${proBarHtml()}
+      ${sponsorBannerHtml('top')}
       <div class="panel" style="padding:8px 20px">
         <table class="peer-table">
           <thead><tr><th class="c">#</th><th>Symbol</th><th>Name</th><th class="c">Yield</th><th class="c">Total Return</th><th class="c">Annualized</th><th class="c">Grade</th></tr></thead>
@@ -765,6 +781,7 @@ ${headerHtml()}
     </section>
     ${networkHtml()}
   </div>
+  ${sponsorBannerHtml('bottom')}
 </main>
 ${footerHtml()}
 </body>
