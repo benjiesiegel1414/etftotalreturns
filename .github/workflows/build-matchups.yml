@@ -35,5 +35,8 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "Rebuild ETF matchup pages ($(date -u +%Y-%m-%d))"
-            git push
+            for i in 1 2 3; do
+              git pull --rebase origin main && git push && break
+              sleep 5
+            done
           fi

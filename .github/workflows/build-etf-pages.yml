@@ -5,6 +5,10 @@ on:
     # 07:10 UTC daily (about 3:10am ET) — after the sheet refreshes
     - cron: '10 7 * * *'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'generate-etf-pages.js'
 
 permissions:
   contents: write
@@ -34,5 +38,8 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "Auto-update ETF scorecard pages $(date -u +'%Y-%m-%d')"
-            git push
+            for i in 1 2 3; do
+              git pull --rebase origin main && git push && break
+              sleep 5
+            done
           fi
